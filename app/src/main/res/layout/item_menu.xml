@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="8dp" android:foreground="?attr/selectableItemBackground"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:padding="12dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent" android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivImage"
+            android:src="@drawable/placeholder"
+            android:layout_width="84dp" android:layout_height="84dp"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:text="Item name" android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvDesc"
+                android:text="Short description"
+                android:maxLines="2" android:ellipsize="end"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:text="Rs. 0.00"
+                android:textStyle="bold"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:text="Add"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
