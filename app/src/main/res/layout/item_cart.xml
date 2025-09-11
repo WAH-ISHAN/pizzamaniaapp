@@ -1,24 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="8dp" android:gravity="center_vertical"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+    android:padding="16dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pizza_new">
 
-    <ImageView android:id="@+id/ivThumb"
-        android:layout_width="56dp" android:layout_height="56dp"
-        android:src="@android:drawable/ic_menu_report_image" android:scaleType="centerCrop"/>
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif-monospace"
+        android:layout_marginTop="20dp"
+        android:text="Pizza Mania - Cart"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-    <LinearLayout android:orientation="vertical" android:layout_marginStart="8dp"
-        android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
-        <TextView android:id="@+id/tvName" android:textStyle="bold"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-        <TextView android:id="@+id/tvPrice"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <!-- Profile Icon or Cart Illustration -->
+
+    <!-- Single Cart Item -->
+    <LinearLayout
+        android:id="@+id/layoutCartItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_title_bg"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/ivThumb"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/bbq_chickenpizza"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:text="Pizza Name"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:text="$10.00"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Qty Controls -->
+        <Button
+            android:id="@+id/btnMinus"
+            android:text="−"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_black_rounded_ripple"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tvQty"
+            android:text="1"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_width="36dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnPlus"
+            android:text="+"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_black_rounded_ripple"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnRemove"
+            android:text="Remove"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/btn_black_rounded_ripple"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <Button android:id="@+id/btnMinus" android:text="−" android:layout_width="40dp" android:layout_height="40dp"/>
-    <TextView android:id="@+id/tvQty" android:text="1" android:gravity="center"
-        android:layout_width="36dp" android:layout_height="wrap_content"/>
-    <Button android:id="@+id/btnPlus" android:text="+" android:layout_width="40dp" android:layout_height="40dp"/>
-    <Button android:id="@+id/btnRemove" android:text="Remove" android:layout_marginStart="8dp"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <!-- Checkout Button -->
+    <Button
+        android:id="@+id/btnCheckout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_black_rounded_ripple"
+        android:text="Proceed to Checkout"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
 </LinearLayout>

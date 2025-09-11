@@ -164,54 +164,48 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:padding="12dp">
 
                 <ImageView
-                    android:layout_width="80dp"
+                    android:layout_width="101dp"
                     android:layout_height="80dp"
                     android:contentDescription="Pepperoni Pizza"
-                    android:src="@drawable/pizza_pepperoni" />
+                    android:src="@drawable/pepperoni_pizza" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="258dp"
+                    android:layout_height="82dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:paddingStart="12dp">
 
                     <TextView
+                        android:layout_width="181dp"
+                        android:layout_height="wrap_content"
                         android:text="Pepperoni Pizza"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:text="Offer valid today only\n20min"
-                        android:textColor="@color/dark_gray"
-                        android:textSize="13sp" />
-
-                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="2dp"
+                        android:text="Offer valid today only\n20min"
+                        android:textColor="@color/grey"
+                        android:textSize="13sp" />
 
-                        <TextView
-                            android:text="$10.00"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="79dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="$10.00"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_marginStart="8dp"
-                            android:background="@drawable/discount_bg"
-                            android:padding="4dp"
-                            android:text="20% Off"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
@@ -227,53 +221,54 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="116dp"
                 android:orientation="horizontal"
                 android:padding="12dp">
 
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/pizza_margherita"
-                    android:contentDescription="Margherita Pizza"/>
+                    android:layout_width="103dp"
+                    android:layout_height="87dp"
+                    android:contentDescription="Margherita Pizza"
+                    android:src="@drawable/hotpepperpizza" />
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="92dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:paddingStart="12dp">
 
                     <TextView
-                        android:text="Margherita Pizza"
+                        android:layout_width="189dp"
+                        android:layout_height="wrap_content"
+                        android:text="Hot chilli Pizza"
+                        android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"/>
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:layout_width="122dp"
+                        android:layout_height="38dp"
+                        android:layout_marginTop="2dp"
                         android:text="Offer valid today only\n30min"
-                        android:textSize="13sp"
-                        android:textColor="@color/dark_gray"/>
+                        android:textColor="@color/grey"
+                        android:textSize="13sp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
+                            android:layout_width="85dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
                             android:text="$8.00"
+                            android:textColor="@color/black"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"/>
+                            android:textStyle="bold" />
 
-                        <TextView
-                            android:text="10% Off"
-                            android:layout_marginStart="8dp"
-                            android:background="@drawable/discount_bg"
-                            android:padding="4dp"
-                            android:textColor="@color/white"
-                            android:textSize="12sp"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -288,62 +283,57 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:padding="12dp">
 
                 <ImageView
-                    android:layout_width="80dp"
+                    android:layout_width="105dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/pizza_pepperoni"
-                    android:contentDescription="Pepperoni Pizza"/>
+                    android:contentDescription="Pepperoni Pizza"
+                    android:src="@drawable/bbq_chickenpizza" />
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="81dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:paddingStart="12dp">
 
                     <TextView
-                        android:text="Pepperoni Pizza"
+                        android:layout_width="167dp"
+                        android:layout_height="wrap_content"
+                        android:text="BBQ Chicken Pizza"
+                        android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"/>
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
                         android:text="Offer valid today only\n20min"
-                        android:textSize="13sp"
-                        android:textColor="@color/dark_gray"/>
+                        android:textColor="@color/grey"
+                        android:textSize="13sp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
+                            android:layout_width="92dp"
+                            android:layout_height="wrap_content"
                             android:text="$10.00"
+                            android:textColor="@color/black"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"/>
+                            android:layout_marginTop="2dp"
+                            android:textStyle="bold" />
 
-                        <TextView
-                            android:text="20% Off"
-                            android:layout_marginStart="8dp"
-                            android:background="@drawable/discount_bg"
-                            android:padding="4dp"
-                            android:textColor="@color/white"
-                            android:textSize="12sp"/>
                     </LinearLayout>
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_add"
-                    android:layout_gravity="center_vertical"
-                    android:contentDescription="Add"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

@@ -3,7 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
     <color name="grey">#C7C7D0</color>
-    <color name="transparent">#2FFFFFFF</color>
+    <color name="transparent">#40FFFFFF</color>
     <selector xmlns:android="http://schemas.android.com/apk/res/android">
         <item android:color="#80FFFFFF" android:state_enabled="false" /> <!-- disabled slightly transparent -->
         <item android:color="#FFFFFF"/> <!-- default white -->

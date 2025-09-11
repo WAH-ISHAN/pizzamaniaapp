@@ -17,6 +17,7 @@
             android:paddingStart="29dp"
             android:paddingTop="32dp"
             android:paddingEnd="20dp"
+            android:background="@drawable/pizza_new"
             android:paddingBottom="32dp">
 
             <!-- Page Title -->
@@ -80,10 +81,10 @@
                 android:layout_marginTop="180dp"
                 android:background="@drawable/text_round_bg"
                 android:text="Order ID: "
+                android:textAlignment="center"
                 android:textColor="@color/grey"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -92,12 +93,12 @@
                 android:id="@+id/tvStatus"
                 android:layout_width="332dp"
                 android:layout_height="35dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/text_round_bg"
                 android:text="Status: "
-                android:textColor="@color/grey"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
                 android:textAlignment="center"
+                android:textColor="@color/grey"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvId" />
@@ -107,46 +108,46 @@
                 android:id="@+id/tvBranch"
                 android:layout_width="332dp"
                 android:layout_height="35dp"
-                android:text="Branch: "
-                android:textSize="16sp"
-                android:textColor="@color/grey"
-                android:textAlignment="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/text_round_bg"
+                android:text="Branch: "
+                android:textAlignment="center"
+                android:textColor="@color/grey"
+                android:textSize="16sp"
 
-                app:layout_constraintTop_toBottomOf="@id/tvStatus"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/tvStatus" />
 
             <!-- Address -->
             <TextView
                 android:id="@+id/tvAddress"
                 android:layout_width="332dp"
                 android:layout_height="35dp"
-                android:text="Address: "
-                android:textSize="16sp"
-                android:textColor="@color/grey"
-                android:textAlignment="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/text_round_bg"
-                app:layout_constraintTop_toBottomOf="@id/tvBranch"
+                android:text="Address: "
+                android:textAlignment="center"
+                android:textColor="@color/grey"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/tvBranch" />
 
             <!-- Payment -->
             <TextView
                 android:id="@+id/tvPayment"
                 android:layout_width="332dp"
                 android:layout_height="35dp"
-                android:text="Payment: "
-                android:textSize="16sp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/text_round_bg"
+                android:text="Payment: "
                 android:textAlignment="center"
                 android:textColor="@color/grey"
-                app:layout_constraintTop_toBottomOf="@id/tvAddress"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/tvAddress" />
 
             <!-- Total -->
             <TextView
@@ -155,28 +156,28 @@
                 android:layout_height="35dp"
                 android:layout_marginTop="10dp"
                 android:text="Total: Rs. 0.00"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="@color/black"
                 android:textAlignment=""
-                app:layout_constraintTop_toBottomOf="@id/tvPayment"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/tvPayment" />
 
             <!-- Created -->
             <TextView
                 android:id="@+id/tvCreated"
                 android:layout_width="332dp"
                 android:layout_height="35dp"
-                android:layout_marginBottom="8dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
                 android:text="Created: "
                 android:textAlignment="center"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/tvTotal"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/tvTotal" />
 
             <!-- RecyclerView for items -->
             <androidx.recyclerview.widget.RecyclerView

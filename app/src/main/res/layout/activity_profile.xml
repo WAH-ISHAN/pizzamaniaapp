@@ -2,17 +2,89 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="16dp" android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:background="@drawable/pizza_new"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif-monospace"
+        android:layout_marginTop="20dp"
+        android:text="Pizza Mania"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        />
+
 
     <ImageView
         android:id="@+id/ivProfile"
-        android:src="@drawable/placeholder"
-        android:layout_width="160dp" android:layout_height="160dp"
+        android:layout_marginTop="40dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:background="@drawable/propic"
         android:scaleType="centerCrop" />
 
     <Button
         android:id="@+id/btnCapture"
+        android:layout_width="232dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/btn_black_rounded_ripple"
         android:text="Capture Profile Photo"
-        android:layout_marginTop="16dp"
-        android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</LinearLayout>
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="346dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/transparent"
+            android:text="Change Profile details"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+
+            android:layout_height="57dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/transparent"
+            android:text="Change Password"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/transparent"
+            android:text="Remove Account"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/transparent"
+            android:text="Log Out"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+
+    </LinearLayout>
+

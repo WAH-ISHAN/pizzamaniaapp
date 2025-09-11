@@ -1,47 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="16dp"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent" android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/pizza_bg">
 
-        <TextView
-            android:id="@+id/tvLocation"
-            android:text="Locating..."
-            android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/pizza_new"
+            android:paddingStart="17dp"
+            android:paddingTop="32dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="32dp">
 
-        <EditText
-            android:id="@+id/etAddress"
-            android:hint="Delivery address"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="12dp" />
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tvOrderTitle"
+                android:layout_width="371dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/rounded_title_bg"
+                android:fontFamily="serif"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                android:text="Place Your Order"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:text="Payment method"
-            android:layout_marginTop="16dp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <!-- Pizza Image -->
 
-        <RadioGroup
-            android:id="@+id/rgPayment"
-            android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <!-- Location -->
+            <ImageView
+                android:id="@+id/ivPizza"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="-20dp"
+                android:contentDescription="Pizza illustration"
+                android:src="@drawable/mainimage"
+                app:layout_constraintEnd_toEndOf="@id/tvOrderTitle"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@id/tvOrderTitle"
+                app:layout_constraintTop_toTopOf="@id/tvOrderTitle" />
 
-            <RadioButton
-                android:id="@+id/rbCOD"
-                android:checked="true"
-                android:text="Cash on Delivery" />
-            <RadioButton
-                android:id="@+id/rbCard"
-                android:text="Card (simulated)" />
-        </RadioGroup>
+            <!-- Delivery Address -->
 
-        <Button
-            android:id="@+id/btnPlaceOrder"
-            android:text="Place Order"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent" android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="171dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="8dp"
+                android:text="Location..."
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivPizza" />
 
-    </LinearLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/text_round_bg"
+                android:hint="Delivery address"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLocation" />
+
+            <!-- Payment Title -->
+            <TextView
+                android:id="@+id/tvPaymentTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Payment Method"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etAddress" />
+
+            <!-- Payment Method -->
+            <RadioGroup
+                android:id="@+id/rgPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPaymentTitle">
+
+                <RadioButton
+                    android:id="@+id/rbCOD"
+                    android:buttonTint="@color/black"
+                    android:textSize="15dp"
+                    android:checked="true"
+                    android:text="Cash on Delivery" />
+
+                <RadioButton
+                    android:id="@+id/rbCard"
+                    android:textSize="15dp"
+                    android:buttonTint="@color/black"
+                    android:text="Card (simulated)" />
+            </RadioGroup>
+
+            <!-- Place Order Button -->
+
+            <Button
+                android:id="@+id/btnPlaceOrder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/btn_black_rounded_ripple"
+                android:text="Place Order"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgPayment" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif-monospace"
+                android:text="Pizza Mania"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="117dp"
+                tools:layout_editor_absoluteY="3dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 </ScrollView>
