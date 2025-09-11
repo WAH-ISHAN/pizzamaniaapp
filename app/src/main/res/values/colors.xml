@@ -9,4 +9,4 @@
         <item android:color="#FFFFFF"/> <!-- default white -->
     </selector>
 
-</resources>
+</resource>
