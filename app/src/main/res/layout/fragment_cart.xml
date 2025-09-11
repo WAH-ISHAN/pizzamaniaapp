@@ -1,29 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:padding="8dp"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:padding="16dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pizza_new">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:layout_width="match_parent" android:layout_height="0dp"
-        android:layout_weight="1" />
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="329dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/text_round_bg"
+        android:fontFamily="serif-monospace"
+        android:text="Pizza Mania - Cart"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-    <LinearLayout
-        android:gravity="end|center_vertical"
-        android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:padding="8dp">
+    <!-- Cart Items ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/tvTotal"
-            android:text="Total: Rs. 0.00"
-            android:textStyle="bold"
-            android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_weight="1" />
+        <LinearLayout
+            android:id="@+id/layoutCartItems"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/btnCheckout"
-            android:text="Checkout"
-            android:enabled="false"
-            android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
+            <!-- Example of a simplified Cart Item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/rounded_title_bg"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tvNameQty"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=" BBQ-Chicken Pizza x 2"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="86dp"
+                    android:layout_height="wrap_content"
+                    android:text="$10.00"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <!-- You can add more items dynamically here -->
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Checkout Button -->
+    <Button
+        android:id="@+id/btnCheckout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_black_rounded_ripple"
+        android:text="Proceed to Checkout"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
 </LinearLayout>

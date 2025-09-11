@@ -158,7 +158,7 @@
             <LinearLayout
 
                 android:id="@+id/socialRow"
-                android:layout_width="356dp"
+                android:layout_width="354dp"
                 android:layout_height="58dp"
                 android:layout_marginTop="12dp"
                 android:gravity="center"
@@ -170,14 +170,14 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnGoogle"
-                    android:textColor="@color/white"
-                    android:background="@drawable/btn_black_rounded_ripple"
                     android:layout_width="0dp"
                     android:layout_height="44dp"
                     android:layout_weight="1"
-
+                    android:background="@drawable/btn_black_rounded_ripple"
                     android:text="Google"
+
                     android:textAllCaps="false"
+                    android:textColor="@color/white"
                     app:cornerRadius="10dp"
                     app:iconGravity="textStart" />
 
@@ -187,13 +187,13 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFacebook"
-                    android:textColor="@color/white"
-                    android:background="@drawable/btn_black_rounded_ripple"
                     android:layout_width="0dp"
                     android:layout_height="44dp"
                     android:layout_weight="1"
+                    android:background="@drawable/btn_black_rounded_ripple"
                     android:text="Facebook"
                     android:textAllCaps="false"
+                    android:textColor="@color/white"
                     app:cornerRadius="10dp"
                     app:iconGravity="textStart" />
             </LinearLayout>

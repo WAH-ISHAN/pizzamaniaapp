@@ -14,39 +14,37 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingStart="29dp"
-            android:paddingTop="32dp"
-            android:paddingEnd="20dp"
             android:background="@drawable/pizza_new"
+            android:paddingStart="24dp"
+            android:paddingTop="32dp"
+            android:paddingEnd="24dp"
             android:paddingBottom="32dp">
 
             <!-- Page Title -->
-
-            <!-- Order ID -->
-
-            <!-- Status -->
-
-
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="165dp"
+                android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:fontFamily="serif-monospace"
                 android:text="Pizza Mania"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="24dp"
+                android:textSize="24sp"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteX="88dp"
-                tools:layout_editor_absoluteY="-3dp" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- Order Details -->
+
+            <!-- Pizza Illustration -->
 
             <TextView
                 android:id="@+id/tvOrderTitle"
-                android:layout_width="355dp"
+                android:layout_width="0dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="4dp"
                 android:background="@drawable/rounded_title_bg"
-                android:gravity="center_vertical"
                 android:padding="12dp"
                 android:text="Order Details"
                 android:textAlignment="center"
@@ -56,29 +54,29 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/textView3" />
 
+            <!-- Order ID -->
             <ImageView
                 android:id="@+id/ivPizza"
-                android:layout_width="149dp"
-                android:layout_height="198dp"
-                android:layout_marginTop="-20dp"
-                android:layout_marginEnd="4dp"
-                android:contentDescription="Pizza illustration"
+                android:layout_width="143dp"
+                android:layout_height="148dp"
+                android:layout_marginTop="8dp"
                 android:elevation="4dp"
                 android:src="@drawable/mainimage"
-                app:layout_constraintBottom_toBottomOf="@id/tvRegisterTitle"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/tvOrderTitle"
+                app:layout_constraintEnd_toEndOf="@id/tvOrderTitle"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@id/tvRegisterTitle"
-                app:layout_constraintTop_toTopOf="@id/tvRegisterTitle"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toStartOf="@id/tvOrderTitle"
+                app:layout_constraintTop_toTopOf="@id/tvOrderTitle"
+                app:layout_constraintVertical_bias="0.166" />
 
+            <!-- Status -->
             <TextView
                 android:id="@+id/tvId"
-                android:layout_width="332dp"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="180dp"
+                android:layout_marginTop="80dp"
                 android:background="@drawable/text_round_bg"
                 android:text="Order ID: "
                 android:textAlignment="center"
@@ -86,110 +84,111 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/tvOrderTitle" />
 
             <TextView
                 android:id="@+id/tvStatus"
-                android:layout_width="332dp"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/text_round_bg"
                 android:text="Status: "
                 android:textAlignment="center"
                 android:textColor="@color/grey"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvId" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvId"/>
 
             <!-- Branch -->
             <TextView
                 android:id="@+id/tvBranch"
-                android:layout_width="332dp"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/text_round_bg"
                 android:text="Branch: "
                 android:textAlignment="center"
                 android:textColor="@color/grey"
                 android:textSize="16sp"
-
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvStatus" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvStatus"/>
 
             <!-- Address -->
             <TextView
                 android:id="@+id/tvAddress"
-                android:layout_width="332dp"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/text_round_bg"
                 android:text="Address: "
                 android:textAlignment="center"
                 android:textColor="@color/grey"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvBranch" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBranch"/>
 
             <!-- Payment -->
             <TextView
                 android:id="@+id/tvPayment"
-                android:layout_width="332dp"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/text_round_bg"
                 android:text="Payment: "
                 android:textAlignment="center"
                 android:textColor="@color/grey"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAddress"/>
+
+            <!-- Phone Number -->
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/text_round_bg"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/grey"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPayment"/>
 
             <!-- Total -->
             <TextView
                 android:id="@+id/tvTotal"
-                android:layout_width="332dp"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:text="Total: Rs. 0.00"
-                android:textAlignment=""
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvPayment" />
-
-            <!-- Created -->
-            <TextView
-                android:id="@+id/tvCreated"
-                android:layout_width="332dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="8dp"
-                android:text="Created: "
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTotal" />
+                app:layout_constraintTop_toBottomOf="@id/etPhone"/>
 
             <!-- RecyclerView for items -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler"
-                android:layout_width="348dp"
-                android:layout_height="168dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="363dp"
+                android:layout_height="169dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvCreated"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@id/tvTotal" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </ScrollView>

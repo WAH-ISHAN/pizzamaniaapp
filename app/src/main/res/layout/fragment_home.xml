@@ -1,38 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="24dp"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pizza_new">
+
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent" android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome!"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:fontFamily="serif-monospace"/>
 
         <TextView
-            android:text="Hello! What do you want to do?"
-            android:textSize="20sp" android:textStyle="bold"
-            android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What do you want to do?"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp"/>
 
+        <!-- Buttons -->
         <Button
             android:id="@+id/btnMap"
             android:text="Open Branches Map"
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent" android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_black_rounded_ripple"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
 
         <Button
             android:id="@+id/btnProfile"
             android:text="Open Profile (Camera)"
-            android:layout_marginTop="12dp"
-            android:layout_width="match_parent" android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/btn_black_rounded_ripple"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
 
         <Button
             android:id="@+id/btnSeed"
             android:text="Seed Sample Data (once)"
-            android:layout_marginTop="12dp"
-            android:layout_width="match_parent" android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/btn_black_rounded_ripple"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
 
         <Button
             android:id="@+id/btnLogout"
             android:text="Logout"
-            android:layout_marginTop="12dp"
-            android:layout_width="match_parent" android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/btn_black_rounded_ripple"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
     </LinearLayout>
 </ScrollView>
