@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_margin="12dp"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:cardElevation="6dp"
-
-    android:background="@drawable/pizza_new"
-    android:radius="16dp"
-    android:foreground="?android:attr/selectableItemBackground">
-
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/pizza_new"> <!-- Full background -->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="193dp"
-        android:background="@drawable/pizza_bg"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@android:color/transparent"> <!-- Transparent to show CardView background -->
 
         <!-- Order ID -->
         <TextView
@@ -23,47 +19,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Order #12345"
+            android:layout_marginTop="30dp"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <!-- Order Status -->
         <TextView
             android:id="@+id/tvStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_width="259dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="4dp"
             android:text="Status: Pending"
             android:textColor="@color/black"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:textStyle="italic" />
 
         <!-- Total + Date Row -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="34dp"
+            android:layout_width="390dp"
+            android:layout_height="70dp"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <TextView
                 android:id="@+id/tvTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_weight="1"
                 android:text="Total: Rs. 1200"
-
                 android:textColor="@color/black"
-                android:textSize="17sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvDate"
-                android:layout_width="114dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:text="  2025-09-12"
+                android:layout_width="6dp"
+                android:layout_height="53dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="2025-09-12"
                 android:textColor="@color/black"
-
-                android:textSize="17sp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
         <!-- Reorder Button -->

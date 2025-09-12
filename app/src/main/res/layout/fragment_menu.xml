@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="16dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pizza_new">
 
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/text_round_bg"
+        android:fontFamily="serif"
+        android:text="Pizza Mania "
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="213dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/text_round_bg"
+        android:fontFamily="serif-monospace"
+        android:text="MENU "
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- RecyclerView for Cart Items -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
-        android:layout_width="match_parent" android:layout_height="match_parent"
-        android:padding="8dp" />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
+        android:paddingBottom="8dp" />
 
+    <!-- ProgressBar overlay -->
     <ProgressBar
         android:id="@+id/progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_gravity="center"
-        android:layout_width="48dp" android:layout_height="48dp" />
-</FrameLayout>
+
+        android:visibility="gone" />
+
+    <!-- Checkout Button -->
+    <Button
+        android:id="@+id/btnCheckout"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_black_rounded_ripple"
+        android:text="back"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>

@@ -1,17 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pizza_new">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+    <!-- Main vertical layout -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/emptyState"
-        android:text="No orders yet"
-        android:visibility="gone"
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/text_round_bg"
+            android:fontFamily="serif-monospace"
+            android:text="Pizza Mania - Orders"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- RecyclerView for orders -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"
+            android:paddingBottom="8dp" />
+
+        <!-- Empty state text -->
+        <TextView
+            android:id="@+id/emptyState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No orders yet"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_gravity="center" />
+
+        <!-- Checkout or action button -->
+        <Button
+            android:id="@+id/btnCheckout"
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_black_rounded_ripple"
+            android:text="back"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <!-- Optional loading overlay -->
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:indeterminateTint="@color/teal_700"
+        android:visibility="gone" />
+
 </FrameLayout>

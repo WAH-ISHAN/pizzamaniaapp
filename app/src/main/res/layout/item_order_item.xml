@@ -1,42 +1,97 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="12dp"
-    android:cardElevation="6dp"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
     android:background="@drawable/pizza_new"
-    android:radius="16dp"
-    android:foreground="?android:attr/selectableItemBackground">
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-        <!-- Name and quantity -->
+        <!-- Title -->
         <TextView
-            android:id="@+id/tvNameQty"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Chicken Pizza x 2"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <!-- Price -->
-        <TextView
-            android:id="@+id/tvPrice"
+            android:id="@+id/tvHeader"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rs. 3780.00"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
+            android:layout_height="69dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="serif-monospace"
+            android:text="Pizza Mania
+            Order Items"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
             android:textStyle="bold" />
+
+        <!-- Single Cart Item Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:cardElevation="6dp"
+            android:radius="16dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:background="@drawable/pizza_new">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="12dp"
+                android:background="@android:color/transparent">
+
+                <!-- Thumbnail -->
+                <ImageView
+                    android:id="@+id/ivThumb"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bbq_chickenpizza" />
+
+                <!-- Name and Price -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
+
+                    <TextView
+                        android:id="@+id/tvNameQty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chicken Pizza x 2"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tvPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rs. 3780.00"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- Remove Button -->
+                <Button
+                    android:id="@+id/btnRemove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_black_rounded_ripple"
+                    android:text="Remove"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Checkout Button -->
 
     </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+</ScrollView>
