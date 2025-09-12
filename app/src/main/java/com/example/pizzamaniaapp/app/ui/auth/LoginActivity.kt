@@ -1,45 +1,51 @@
-package com.example.pizzamaniaapp.app.ui.auth;
+package com.pizzamania.ui.auth
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.*;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import com.google.firebase.auth.FirebaseAuth;
-import com.example.pizzamaniaapp.R;
-import com.example.pizzamaniaapp.app.ui.main.MainActivity;
+import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.pizzamania.R
+import com.pizzamania.data.repo.AuthRepo
+import com.example.pizzamaniaapp.ui.admin.AdminDashboardActivity
+import com.pizzamania.ui.home.HomeActivity
+import com.pizzamania.util.toast
+import com.google.android.material.button.MaterialButton
+import android.widget.Button
+import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
-public class LoginActivity extends AppCompatActivity {
-    private FirebaseAuth auth;
+class LoginActivity : AppCompatActivity() {
+    private val repo by lazy { AuthRepo(Firebase.auth, Firebase.firestore) }
+    private var selectedRole: String = "user"
 
-    @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        auth = FirebaseAuth.getInstance();
-        if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
-            return;
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login) // set your file name
+
+
+
+        findViewById<MaterialButton>(R.id.btnAdmin).setOnClickListener { selectedRole = "admin" }
+        findViewById<MaterialButton>(R.id.btnUser).setOnClickListener { selectedRole = "user" }
+
+        findViewById<Button>(R.id.btnPrimary).setOnClickListener {
+            val email = findViewById<TextInputEditText>(R.id.etEmail).text?.toString()?.trim().orEmpty()
+            val pass = findViewById<TextInputEditText>(R.id.etPassword).text?.toString().orEmpty()
+            lifecycleScope.launch {
+                repo.signIn(email, pass).onSuccess {
+                    val (role, _) = repo.currentRoleBranch()
+                    if (role == "admin") startActivity(Intent(this@LoginActivity, AdminDashboardActivity::class.java))
+                    else startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+                    finish()
+                }.onFailure { toast(it.message ?: "Login failed") }
+            }
         }
-        EditText email = findViewById(R.id.etEmail);
-        EditText pass = findViewById(R.id.etPassword);
-        Button btn = findViewById(R.id.btnLogin);
-        TextView goReg = findViewById(R.id.tvGoRegister);
-        btn.setOnClickListener(v -> {
-            String e = email.getText().toString().trim();
-            String p = pass.getText().toString();
-            if (e.isEmpty() || p.isEmpty()) { Toast.makeText(this, "Enter email and password", Toast.LENGTH_SHORT).show(); return; }
-            btn.setEnabled(false);
-            auth.signInWithEmailAndPassword(e, p).addOnCompleteListener(task -> {
-                btn.setEnabled(true);
-                if (task.isSuccessful()) {
-                    startActivity(new Intent(this, MainActivity.class));
-                    finish();
-                } else {
-                    Toast.makeText(this, "Login failed: " + (task.getException()!=null?task.getException().getMessage():""), Toast.LENGTH_LONG).show();
-                }
-            });
-        });
-        goReg.setOnClickListener(v -> startActivity(new Intent(this, RegisterActivity.class)));
+
+        findViewById<TextView>(R.id.tvRegister).setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
     }
 }

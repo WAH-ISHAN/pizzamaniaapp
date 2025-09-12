@@ -1,47 +1,34 @@
-package com.example.pizzamaniaapp.app.ui.menu;
+package com.example.pizzamaniaapp.app.ui.menu
 
-import android.view.*;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-import com.bumptech.glide.Glide;
-import com.example.pizzamaniaapp.R;
-import com.example.pizzamaniaapp.app.data.entities.MenuItem;
-import java.util.List;
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.pizzamania.R
+import com.pizzamania.data.model.MenuItem
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 
-public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.VH> {
-    public interface Callback { void onAddToCart(MenuItem item); void onOpenDetails(MenuItem item); }
-    private List<MenuItem> data; private final Callback cb;
-    public MenuAdapter(List<MenuItem> data, Callback cb) { this.data = data; this.cb = cb; }
-    public void submit(List<MenuItem> d) { data = d; notifyDataSetChanged(); }
+class MenuAdapter(private val onClick: (MenuItem) -> Unit) : RecyclerView.Adapter<MenuAdapter.VH>() {
+    private val data = mutableListOf<MenuItem>()
+    fun submit(list: List<MenuItem>) { data.clear(); data.addAll(list); notifyDataSetChanged() }
 
-    @NonNull @Override public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new VH(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_menu, parent, false));
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        VH(LayoutInflater.from(parent.context).inflate(R.layout.row_menu_item, parent, false))
+
+    override fun getItemCount() = data.size
+    override fun onBindViewHolder(holder: VH, position: Int) {
+        val item = data[position]
+        holder.name.text = item.name
+        holder.price.text = "Rs. ${"%.2f".format(item.price)}"
+        Glide.with(holder.image.context).load(item.imageUrl).into(holder.image)
+        holder.itemView.setOnClickListener { onClick(item) }
     }
 
-    @Override public void onBindViewHolder(@NonNull VH h, int pos) {
-        MenuItem m = data.get(pos);
-        h.title.setText(m.name);
-        h.desc.setText(m.description);
-        h.price.setText(String.format("Rs. %.2f", m.price));
-        Glide.with(h.image).load(m.imageUrl).placeholder(R.drawable.placeholder).into(h.image);
-        h.add.setOnClickListener(v -> cb.onAddToCart(m));
-        h.itemView.setOnClickListener(v -> cb.onOpenDetails(m));
-    }
-
-    @Override public int getItemCount() { return data.size(); }
-
-    static class VH extends RecyclerView.ViewHolder {
-        TextView title, desc, price; ImageView image; Button add;
-        VH(@NonNull View v) {
-            super(v);
-            title = v.findViewById(R.id.tvTitle);
-            desc = v.findViewById(R.id.tvDesc);
-            price = v.findViewById(R.id.tvPrice);
-            image = v.findViewById(R.id.ivImage);
-            add = v.findViewById(R.id.btnAdd);
-        }
+    class VH(v: View): RecyclerView.ViewHolder(v) {
+        val name: TextView = v.findViewById(R.id.tvName)
+        val price: TextView = v.findViewById(R.id.tvPrice)
+        val image: ImageView = v.findViewById(R.id.ivThumb)
     }
 }
