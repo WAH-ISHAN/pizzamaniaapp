@@ -28,9 +28,9 @@
 
         <TextView
             android:id="@+id/tvHeader3"
-            android:layout_width="match_parent"
+            android:layout_width="333dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="serif-monospace"
             android:text="Pizza Mania"
             android:textAlignment="center"
@@ -53,14 +53,14 @@
             android:text="Open Branches Map"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="70dp"
             android:background="@drawable/btn_black_rounded_ripple"
             android:textColor="@color/white"
             android:textSize="16sp"/>
 
         <Button
             android:id="@+id/btnProfile"
-            android:text="Open Profile (Camera)"
+            android:text="Open Profile "
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
@@ -70,13 +70,23 @@
 
         <Button
             android:id="@+id/btnSeed"
-            android:text="Seed Sample Data (once)"
+            android:text="pizza menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
             android:background="@drawable/btn_black_rounded_ripple"
             android:textColor="@color/white"
             android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/btnSeed2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/btn_black_rounded_ripple"
+            android:text="order"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnLogout"

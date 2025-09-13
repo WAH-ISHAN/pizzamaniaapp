@@ -19,7 +19,7 @@ import com.google.firebase.Timestamp
 class AdminOrdersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_admin_orders)
+        setContentView(R.layout.fragment_orders)
 
 
         val recycler = findViewById<RecyclerView>(R.id.recycler)

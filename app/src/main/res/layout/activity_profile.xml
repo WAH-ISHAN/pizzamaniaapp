@@ -1,26 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="16dp" android:gravity="center_horizontal"
+    android:padding="16dp"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@drawable/pizza_new"
     android:layout_height="match_parent">
 
+    <!-- Top bar: Back, Title, Next -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="serif-monospace"
-        android:layout_marginTop="10dp"
-        android:text="Pizza Mania"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        />
+        <!-- Back Button -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrowback"
+            android:contentDescription="Back"
+            android:layout_gravity="start|center_vertical" />
 
+        <!-- Title -->
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
+            android:text="Pizza Mania"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
 
+        <!-- Next Button -->
+        <ImageButton
+            android:id="@+id/btnNext"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrownext"
+            android:contentDescription="Next"
+            android:layout_gravity="end|center_vertical" />
+    </FrameLayout>
+
+    <!-- Profile Image -->
     <ImageView
         android:id="@+id/ivProfile"
         android:layout_width="136dp"
@@ -29,6 +56,7 @@
         android:background="@drawable/propic"
         android:scaleType="centerCrop" />
 
+    <!-- Capture Profile Button -->
     <Button
         android:id="@+id/btnCapture"
         android:layout_width="232dp"
@@ -38,24 +66,27 @@
         android:text="Capture Profile Photo"
         android:textColor="@color/white" />
 
+    <!-- Card Container -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="474dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="450dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_white_card"
         android:orientation="vertical">
 
+        <!-- Name -->
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="20dp"
-            android:background="@color/transparent"
             android:text="Name"
             android:textColor="@color/black"
             android:textSize="18dp" />
 
+        <!-- Change Password -->
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textViewChangePassword"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -65,8 +96,9 @@
             android:textSize="18dp"
             android:textStyle="bold" />
 
+        <!-- Current Password -->
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/textViewCurrentPassword"
             android:layout_width="164dp"
             android:layout_height="30dp"
             android:layout_marginTop="1dp"
@@ -85,8 +117,9 @@
             android:inputType="textPassword"
             android:textColor="@color/black" />
 
+        <!-- New Password -->
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/textViewNewPassword"
             android:layout_width="164dp"
             android:layout_height="30dp"
             android:layout_marginTop="1dp"
@@ -101,13 +134,13 @@
             android:layout_height="45dp"
             android:layout_marginTop="5dp"
             android:background="@color/transparent"
-
             android:ems="10"
             android:inputType="textPassword"
             android:textColor="@color/black" />
 
+        <!-- Change Email -->
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/textViewEmail"
             android:layout_width="164dp"
             android:layout_height="30dp"
             android:layout_marginTop="1dp"
@@ -125,6 +158,7 @@
             android:ems="10"
             android:inputType="textEmailAddress" />
 
+        <!-- Buttons Row -->
         <LinearLayout
             android:id="@+id/socialRow"
             android:layout_width="354dp"
@@ -132,7 +166,6 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal">
-
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnGoogle"
@@ -142,9 +175,7 @@
                 android:background="@drawable/btn_black_rounded_ripple"
                 android:text="Update"
                 android:textAllCaps="false"
-                android:textColor="@color/white"/>
-
-
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="12dp"
@@ -161,7 +192,5 @@
                 android:textColor="@color/white" />
         </LinearLayout>
 
-
-
     </LinearLayout>
-
+</LinearLayout>

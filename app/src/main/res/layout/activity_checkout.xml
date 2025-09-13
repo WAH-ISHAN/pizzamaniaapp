@@ -20,16 +20,47 @@
             android:paddingEnd="24dp"
             android:paddingBottom="32dp">
 
+            <!-- Back Arrow Button -->
+
+            <!-- App Title -->
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Back"
+                android:src="@drawable/arrowback"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif-monospace"
+                android:text="Pizza Mania"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="10dp"/>
+
             <!-- Title -->
             <TextView
                 android:id="@+id/tvOrderTitle"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="65dp"
                 android:background="@drawable/rounded_title_bg"
                 android:fontFamily="serif"
                 android:gravity="center_vertical|center_horizontal|start"
-                android:padding="12dp"
+                android:padding="10dp"
+
                 android:text="Place Your Order"
                 android:textColor="@color/black"
                 android:textSize="22sp"
@@ -41,15 +72,16 @@
             <!-- Pizza Image -->
 
             <!-- Delivery Address Label -->
+
             <ImageView
                 android:id="@+id/ivPizza"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
+                android:layout_width="188dp"
+                android:layout_height="147dp"
                 android:layout_marginTop="-20dp"
                 android:contentDescription="Pizza illustration"
                 android:src="@drawable/mainimage"
                 app:layout_constraintEnd_toEndOf="@id/tvOrderTitle"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.957"
                 app:layout_constraintStart_toStartOf="@id/tvOrderTitle"
                 app:layout_constraintTop_toTopOf="@id/tvOrderTitle" />
 
@@ -154,21 +186,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rgPayment" />
-
-            <!-- App Title -->
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif-monospace"
-                android:text="Pizza Mania"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

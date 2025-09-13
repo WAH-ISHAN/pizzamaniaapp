@@ -15,8 +15,8 @@
         <!-- Title -->
         <TextView
             android:id="@+id/tvHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="69dp"
+            android:layout_width="162dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="serif-monospace"
             android:text="Pizza Mania

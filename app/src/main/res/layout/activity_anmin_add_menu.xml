@@ -12,12 +12,23 @@
         android:gravity="center_horizontal"
         android:padding="20dp">
 
+        <!-- Back Button -->
+        <ImageButton
+            android:id="@+id/btnBackDashboard"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrowback"
+            android:contentDescription="Back to Dashboard"
+            android:layout_gravity="start"
+            android:layout_marginBottom="16dp"/>
+
         <!-- Title -->
         <TextView
             android:id="@+id/tvWelcomeAdmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:text="Add Menu"
             android:textColor="@color/black"
             android:textSize="22sp"
@@ -45,7 +56,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_white_card"
+            android:layout_marginTop="10dp"
             android:divider="?android:dividerHorizontal"
             android:showDividers="middle"
             android:paddingBottom="20dp">

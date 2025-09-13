@@ -20,13 +20,53 @@
             android:paddingEnd="24dp"
             android:paddingBottom="32dp">
 
+            <!-- Top bar: Back button, Title, Next button -->
+            <FrameLayout
+                android:id="@+id/topBar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <!-- Title in rounded shape -->
+                <!-- Back Button -->
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="start|center_vertical"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/arrowback"
+                    android:contentDescription="Back" />
+
+                <!-- Title -->
+                <TextView
+                    android:id="@+id/tvHeaderTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Pizza Mania"
+                    android:textAlignment="center"
+                    android:textSize="25sp"
+                    android:fontFamily="serif-monospace"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <!-- Next Button -->
+                <ImageButton
+                    android:id="@+id/btnNext"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/arrownext"
+                    android:contentDescription="Next" />
+            </FrameLayout>
+
+            <!-- Page title in rounded shape -->
             <TextView
                 android:id="@+id/tvRegisterTitle"
                 android:layout_width="371dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/rounded_title_bg"
                 android:fontFamily="serif"
                 android:gravity="center_vertical"
@@ -36,50 +76,24 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/topBar" />
+
             <!-- Pizza image on top of the title -->
             <ImageView
                 android:id="@+id/ivPizza"
-                android:layout_width="192dp"
-                android:layout_height="201dp"
+                android:layout_width="186dp"
+                android:layout_height="185dp"
                 android:layout_marginTop="-20dp"
                 android:contentDescription="Pizza illustration"
                 android:elevation="4dp"
                 android:src="@drawable/mainimage"
                 app:layout_constraintBottom_toBottomOf="@id/tvRegisterTitle"
                 app:layout_constraintEnd_toEndOf="@id/tvRegisterTitle"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@id/tvRegisterTitle"
                 app:layout_constraintTop_toTopOf="@id/tvRegisterTitle"
                 app:layout_constraintVertical_bias="0.0" />
-            <!-- Email input -->
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/text_round_bg"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                app:boxBackgroundMode="none"
-                tools:layout_editor_absoluteX="-4dp"
-                tools:layout_editor_absoluteY="434dp" />
-            <!-- Password input -->
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/text_round_bg"
-                android:hint="Password"
-                android:inputType="textPersonName"
-                android:padding="12dp"
-                android:textColor="@color/black"
-                app:boxBackgroundMode="none"
-                tools:layout_editor_absoluteX="25dp"
-                tools:layout_editor_absoluteY="365dp" />
+
             <!-- Full Name input -->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etName2"
@@ -91,9 +105,44 @@
                 android:padding="12dp"
                 android:textColor="@color/black"
                 app:boxBackgroundMode="none"
-                tools:layout_editor_absoluteX="20dp"
-                tools:layout_editor_absoluteY="292dp" />
+                app:layout_constraintTop_toBottomOf="@id/ivPizza"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"/>
 
+            <!-- Password input -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_round_bg"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                app:boxBackgroundMode="none"
+                app:layout_constraintTop_toBottomOf="@id/etName2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Email input -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_round_bg"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                app:boxBackgroundMode="none"
+                app:layout_constraintTop_toBottomOf="@id/etName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Save button -->
             <Button
                 android:id="@+id/button"
                 android:layout_width="173dp"
@@ -104,19 +153,11 @@
                 android:textColor="@color/white"
                 android:textSize="15dp"
                 app:boxBackgroundMode="none"
-                tools:layout_editor_absoluteX="101dp"
-                tools:layout_editor_absoluteY="543dp" />
+                app:layout_constraintTop_toBottomOf="@id/etEmail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"/>
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif-monospace"
-                android:text="Pizza Mania"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="24dp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="111dp"
-                tools:layout_editor_absoluteY="0dp" />
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</ScrollView>

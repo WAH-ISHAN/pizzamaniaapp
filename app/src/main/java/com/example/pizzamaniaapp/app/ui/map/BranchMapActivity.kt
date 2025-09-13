@@ -20,7 +20,7 @@ class BranchMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_branch_map)
+        setContentView(R.layout.activity_map)
         val frag = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         frag.getMapAsync(this)
     }
