@@ -1,3 +1,4 @@
+
 {
   "project_info": {
     "project_number": "232626873464",
@@ -9,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:232626873464:android:5dfc6021e0efb35924398d",
         "android_client_info": {
-          "package_name": "com.example.pizzamaniaapp"
+          "package_name": "com.pizzamania"
         }
       },
       "oauth_client": [],
@@ -28,7 +29,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:232626873464:android:cb134b96775d6d0124398d",
         "android_client_info": {
-          "package_name": "com.pizzamania.app"
+          "package_name": "com.example.pizzamaniaapp"
         }
       },
       "oauth_client": [],

@@ -4,10 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.pizzamania.R
-import com.example.pizzamaniaapp.ui.admin.AdminDashboardActivity
+
+
 
 class AdminDashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,13 +16,14 @@ class AdminDashboardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_admin_dashboard)
 
         findViewById<Button>(R.id.btnMap).setOnClickListener {
-            startActivity(Intent(this, AdminOrdersActivity::class.java))
+            startActivity(Intent(this@AdminDashboardActivity, AdminOrdersActivity::class.java))
         }
         findViewById<Button>(R.id.btnProfile).setOnClickListener {
-            startActivity(Intent(this, MenuListActivity::class.java))
+            startActivity(Intent(this@AdminDashboardActivity, MenuListActivity::class.java))
         }
         findViewById<Button>(R.id.btnSeed).setOnClickListener {
-            startActivity(Intent(this, AddMenuActivity::class.java))
+            // If your AddMenuActivity is under this package, keep it; else change package accordingly
+            startActivity(Intent(this@AdminDashboardActivity, AddMenuActivity::class.java))
         }
         findViewById<Button>(R.id.btnLogout).setOnClickListener {
             Firebase.auth.signOut()

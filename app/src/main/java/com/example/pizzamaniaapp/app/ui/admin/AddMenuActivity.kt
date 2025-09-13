@@ -14,6 +14,7 @@ import com.example.pizzamaniaapp.data.repo.MenuRepo
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import com.pizzamania.data.local.MenuCacheDao
 import kotlinx.coroutines.launch
 
 class AddMenuActivity : AppCompatActivity() {
@@ -23,7 +24,8 @@ class AddMenuActivity : AppCompatActivity() {
         MenuRepo(
             Firebase.firestore,
             Firebase.storage,
-            PizzaApp.instance.database.menuCacheDao()
+            PizzaApp.instance.database.menuCacheDao() as MenuCacheDao
+
         )
     }
 
