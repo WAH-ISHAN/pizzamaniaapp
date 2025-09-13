@@ -1,13 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="match_parent">
-    <ImageView android:id="@+id/ivProduct" android:layout_width="match_parent" android:layout_height="200dp" android:scaleType="centerCrop"/>
-    <TextView android:id="@+id/tvTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-    <TextView android:id="@+id/tvPriceText" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <Button android:id="@+id/btnMinus" android:text="-" android:layout_width="48dp" android:layout_height="48dp"/>
-        <TextView android:id="@+id/tvQty" android:layout_width="48dp" android:layout_height="48dp" android:gravity="center"/>
-        <Button android:id="@+id/btnPlus" android:text="+" android:layout_width="48dp" android:layout_height="48dp"/>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pizza_new">
+
+    <!-- Main content (centered) -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Product Card -->
+        <LinearLayout
+            android:layout_width="362dp"
+            android:layout_height="386dp"
+            android:layout_margin="70dp"
+            android:background="@drawable/rounded_white_card"
+            android:elevation="6dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Product Image -->
+            <ImageView
+                android:id="@+id/ivProduct"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/mainimage"
+                android:scaleType="centerCrop" />
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Delicious Pizza"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Price -->
+            <TextView
+                android:id="@+id/tvPriceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Rs. 1200"
+                android:textColor="@color/teal_700"
+                android:textSize="18sp" />
+
+            <!-- Quantity Controls -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnMinus"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/btn_black_rounded_ripple"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvQty"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnPlus"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/btn_black_rounded_ripple"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <!-- Add to Cart -->
+            <Button
+                android:id="@+id/btnAddToCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/btn_black_rounded_ripple"
+                android:text="Add to Cart"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
     </LinearLayout>
-    <Button android:id="@+id/btnAddToCart" android:text="Add to cart" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-</LinearLayout>
+
+    <!-- Top bar: Back button, Title, Next button -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrowback"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_weight="1"
+            android:fontFamily="serif-monospace"
+            android:text="Pizza Mania"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnNext"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrownext"
+            android:contentDescription="Next" />
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -10,7 +10,7 @@ import com.pizzamania.R
 class OrderDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_order_details)
+        setContentView(R.layout.activity_order_detail)
 
         val orderId = intent.getStringExtra("orderId") ?: return
         Firebase.firestore.collection("orders").document(orderId).addSnapshotListener { snap, _ ->

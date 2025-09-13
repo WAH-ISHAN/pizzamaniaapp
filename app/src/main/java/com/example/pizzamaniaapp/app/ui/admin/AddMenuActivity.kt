@@ -38,7 +38,7 @@ class AddMenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // IMPORTANT: make sure this exists: res/layout/activity_add_menu.xml
-        setContentView(R.layout.activity_add_menu)
+        setContentView(R.layout.activity_anmin_add_menu)
 
         val spinner = findViewById<Spinner>(R.id.spinnerBranch)
         lifecycleScope.launch { bindBranches(spinner) }

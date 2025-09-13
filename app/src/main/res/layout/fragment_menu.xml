@@ -1,45 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="16dp"
-    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/pizza_new">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/tvHeader"
+    <!-- Top Bar: Back - Title - Next -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/text_round_bg"
-        android:fontFamily="serif"
-        android:text="Pizza Mania "
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="20dp">
 
+        <!-- Back Button -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrowback"
+            android:contentDescription="Back" />
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="238dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="60dp"
+            android:fontFamily="serif-monospace"
+            android:text="Pizza Mania"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <!-- Next Button -->
+        <ImageButton
+            android:id="@+id/btnNext"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrownext"
+            android:contentDescription="Next" />
+
+    </LinearLayout>
+
+    <!-- Sub Title -->
+
+    <!-- RecyclerView for Menu Items -->
     <TextView
-        android:id="@+id/tvHeader"
-        android:layout_width="213dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/text_round_bg"
+        android:id="@+id/tvMenuTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:fontFamily="serif-monospace"
-        android:text="MENU "
+        android:padding="10dp"
+        android:text="MENU"
+        android:layout_marginLeft="140dp"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <!-- RecyclerView for Cart Items -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="@drawable/rounded_white_card"
         android:layout_marginTop="20dp"
         android:clipToPadding="false"
         android:scrollbars="vertical"
@@ -52,18 +83,7 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_gravity="center"
-
         android:visibility="gone" />
 
-    <!-- Checkout Button -->
-    <Button
-        android:id="@+id/btnCheckout"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/btn_black_rounded_ripple"
-        android:text="back"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
 
 </LinearLayout>

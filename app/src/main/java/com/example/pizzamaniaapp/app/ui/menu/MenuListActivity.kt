@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 class MenuListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu_list)
+        setContentView(R.layout.item_menu)
 
         val recycler = findViewById<RecyclerView>(R.id.recyclerMenu)
         recycler.layoutManager = LinearLayoutManager(this)

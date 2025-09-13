@@ -15,8 +15,8 @@
         <!-- Title -->
         <TextView
             android:id="@+id/tvHeader"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="324dp"
+            android:layout_height="36dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/text_round_bg"
             android:fontFamily="serif-monospace"

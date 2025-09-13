@@ -10,13 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:padding="24dp">
 
         <!-- Logo -->
-
-        <!-- Title -->
-
         <ImageView
             android:id="@+id/ivAdminLogo"
             android:layout_width="120dp"
@@ -25,6 +22,7 @@
             android:contentDescription="Admin Logo"
             android:src="@drawable/propic" />
 
+        <!-- Page Title -->
         <TextView
             android:id="@+id/tvAdminTitle"
             android:layout_width="wrap_content"
@@ -38,16 +36,15 @@
         <!-- Form Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="449dp"
-            android:backgroundTint="@android:color/white"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
             android:padding="20dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="457dp"
-                android:background="@drawable/pizza_new"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <!-- Branch Dropdown -->
@@ -60,91 +57,101 @@
                     <AutoCompleteTextView
                         android:id="@+id/etAdminBranch"
                         android:layout_width="match_parent"
-                        android:layout_height="41dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@color/transparent"
+                        android:layout_height="53dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/text_round_bg"
                         android:cursorVisible="false"
                         android:entries="@array/branches"
                         android:focusable="false"
                         android:inputType="none"
-                        android:text=" Select Branch"
+                        android:paddingLeft="10dp"
+                        android:text="Select Branch"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="152dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Enter Email"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
                 <!-- Email -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="6dp"
                     android:hint="Email">
+
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAdminEmail"
                         android:layout_width="match_parent"
-                        android:layout_height="46dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@color/transparent"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="2dp"
+
+                        android:background="@drawable/text_round_bg"
                         android:inputType="textEmailAddress"
-                        android:text="Branch Email"
                         android:textColor="@color/black" />
+
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Password -->
+
+
+
                 <TextView
-                    android:id="@+id/tvAdminLogin2"
-                    android:layout_width="239dp"
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:paddingLeft="10dp"
                     android:text="Enter Password"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="8dp"
                     android:hint="Password"
                     app:passwordToggleEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAdminPassword"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_marginTop="0dp"
-                        android:background="@color/transparent"
-                        android:inputType="textPassword" />
-
-
+                        android:layout_height="54dp"
+                        android:background="@drawable/text_round_bg"
+                        android:inputType="textPassword"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Confirm Password -->
                 <TextView
-                    android:id="@+id/tvAdminLogin5"
-                    android:layout_width="187dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Comfirm Password"
+                    android:text="Confirm Password"
+                    android:paddingLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="16sp"/>
 
-                <!-- Confirm Password -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="8dp"
                     android:hint="Confirm Password"
                     app:passwordToggleEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAdminConfirmPassword"
                         android:layout_width="match_parent"
-                        android:layout_height="44dp"
-                        android:layout_marginTop="0dp"
-                        android:background="@color/transparent"
-                        android:inputType="textPassword" />
-
+                        android:layout_height="54dp"
+                        android:background="@drawable/text_round_bg"
+                        android:inputType="textPassword"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Register Button -->
@@ -152,27 +159,24 @@
                     android:id="@+id/btnAdminRegister"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="24dp"
                     android:background="@drawable/btn_black_rounded_ripple"
                     android:text="Register as Admin"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    app:cornerRadius="25dp" />
+                    app:cornerRadius="25dp"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Already have account -->
+        <!-- Already have an account -->
         <TextView
             android:id="@+id/tvAdminLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="dp"
+            android:layout_marginTop="16dp"
             android:text="Already have an account? Login"
             android:textColor="@color/black"
-            android:textSize="14sp" />
-
-
-
+            android:textSize="14sp"/>
     </LinearLayout>
 </ScrollView>
