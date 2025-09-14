@@ -1,4 +1,4 @@
-package com.example.pizzamaniaapp.ui.admin
+package com.pizzamania.ui.admin
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.pizzamania.R
-
-
+import com.example.pizzamaniaapp.app.ui.order.AdminOrdersActivity
+import com.example.pizzamaniaapp.app.ui.menu.MenuListActivity
 
 class AdminDashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +22,6 @@ class AdminDashboardActivity : AppCompatActivity() {
             startActivity(Intent(this@AdminDashboardActivity, MenuListActivity::class.java))
         }
         findViewById<Button>(R.id.btnSeed).setOnClickListener {
-            // If your AddMenuActivity is under this package, keep it; else change package accordingly
             startActivity(Intent(this@AdminDashboardActivity, AddMenuActivity::class.java))
         }
         findViewById<Button>(R.id.btnLogout).setOnClickListener {

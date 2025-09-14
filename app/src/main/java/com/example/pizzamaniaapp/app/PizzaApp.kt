@@ -1,13 +1,18 @@
-package com.example.pizzamaniaapp.app
+package com.pizzamania.app
 
 import android.app.Application
 import androidx.room.Room
-import com.example.pizzamaniaapp.app.data.local.AppDatabase
+import com.pizzamania.data.local.AppDb
 
 class PizzaApp : Application() {
 
-    lateinit var database: AppDatabase
-        private set
+    companion object {
+        lateinit var instance: PizzaApp
+            private set
+
+        lateinit var database: AppDb
+            private set
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -15,15 +20,10 @@ class PizzaApp : Application() {
 
         database = Room.databaseBuilder(
             applicationContext,
-            AppDatabase::class.java,
+            AppDb::class.java,
             "pizza-db"
         )
-            // .fallbackToDestructiveMigration() // optional, careful with production data
+            .fallbackToDestructiveMigration() // Enable for development
             .build()
-    }
-
-    companion object {
-        lateinit var instance: PizzaApp
-            private set
     }
 }

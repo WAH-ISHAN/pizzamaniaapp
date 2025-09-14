@@ -1,9 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Pizzamaniaapp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
+        <!-- Customize your light/dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <!-- Your primary app theme -->
     <style name="Theme.Pizzamaniaapp" parent="Base.Theme.Pizzamaniaapp" />
+
+    <!-- Alias to match the manifest name -->
+    <style name="Theme.PizzaMania" parent="Theme.Pizzamaniaapp" />
 </resources>
