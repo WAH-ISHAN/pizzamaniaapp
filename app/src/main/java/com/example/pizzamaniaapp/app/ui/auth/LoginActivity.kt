@@ -1,4 +1,4 @@
-package com.pizzamania.ui.auth
+package com.example.pizzamaniaapp.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,14 +9,15 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.pizzamania.R
 import com.pizzamania.data.repo.AuthRepo
-import com.example.pizzamaniaapp.ui.admin.AdminDashboardActivity
-import com.pizzamania.ui.home.HomeActivity
+import com.pizzamania.ui.admin.AdminDashboardActivity
+import com.example.pizzamaniaapp.app.ui.home.HomeActivity
 import com.pizzamania.util.toast
 import com.google.android.material.button.MaterialButton
 import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
+import com.example.pizzamaniaapp.app.ui.auth.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
     private val repo by lazy { AuthRepo(Firebase.auth, Firebase.firestore) }

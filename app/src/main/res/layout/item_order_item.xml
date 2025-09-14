@@ -1,97 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@drawable/pizza_new"
-    android:padding="16dp">
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    app:cardUseCompatPadding="true"
+    android:background="@drawable/pizza_bg">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:fillViewport="true"
+        android:background="@drawable/pizza_new">
 
-        <!-- Title -->
-        <TextView
-            android:id="@+id/tvHeader"
-            android:layout_width="162dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="serif-monospace"
-            android:text="Pizza Mania
-            Order Items"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <!-- Single Cart Item Card -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:cardElevation="6dp"
-            android:radius="16dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:background="@drawable/pizza_new">
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@android:color/transparent">
+
+            <TextView
+                android:id="@+id/tvOrderId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order #12345"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Status: Pending"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="italic" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="12dp"
-                android:background="@android:color/transparent">
+                android:weightSum="2">
 
-                <!-- Thumbnail -->
-                <ImageView
-                    android:id="@+id/ivThumb"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/bbq_chickenpizza" />
-
-                <!-- Name and Price -->
-                <LinearLayout
+                <TextView
+                    android:id="@+id/tvTotal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="12dp">
+                    android:text="Total: Rs. 1200"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tvNameQty"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Chicken Pizza x 2"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/tvPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rs. 3780.00"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <!-- Remove Button -->
-                <Button
-                    android:id="@+id/btnRemove"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/btn_black_rounded_ripple"
-                    android:text="Remove"
-                    android:textColor="@color/white" />
-
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="2025-09-12"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-        <!-- Checkout Button -->
+            <Button
+                android:id="@+id/btnReorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/btn_black_rounded_ripple"
+                android:text="Reorder"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
-    </LinearLayout>
-</ScrollView>
+        </LinearLayout>
+    </ScrollView>
+</androidx.cardview.widget.CardView>

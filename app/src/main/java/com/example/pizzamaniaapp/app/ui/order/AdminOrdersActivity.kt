@@ -16,10 +16,12 @@ import com.pizzamania.data.repo.AuthRepo
 import kotlinx.coroutines.launch
 import com.google.firebase.Timestamp
 
+
+
 class AdminOrdersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_anmin_add_menu)
+        setContentView(R.layout.activity_admin_orders)
 
 
         val recycler = findViewById<RecyclerView>(R.id.recycler)

@@ -15,7 +15,7 @@ class MenuAdapter(private val onClick: (MenuItem) -> Unit) : RecyclerView.Adapte
     fun submit(list: List<MenuItem>) { data.clear(); data.addAll(list); notifyDataSetChanged() }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        VH(LayoutInflater.from(parent.context).inflate(R.layout.row_menu_item, parent, false))
+        VH(LayoutInflater.from(parent.context).inflate(R.layout.row_cart_simple, parent, false))
 
     override fun getItemCount() = data.size
     override fun onBindViewHolder(holder: VH, position: Int) {

@@ -13,7 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.pizzamania.R
-import com.example.pizzamaniaapp.app.PizzaApp
+import com.pizzamania.app.PizzaApp
 import com.pizzamania.data.repo.BranchRepo
 import com.pizzamania.data.repo.CartRepo
 import com.example.pizzamaniaapp.app.data.repo.OrderRepo

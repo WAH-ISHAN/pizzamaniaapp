@@ -6,13 +6,11 @@
     android:fillViewport="true"
     android:background="@drawable/pizza_new">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp">
-
 
         <!-- Header -->
         <LinearLayout
@@ -26,7 +24,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-
                 android:background="@drawable/text_round_bg"
                 android:text="Popular Pizza"
                 android:textColor="@color/black"
@@ -88,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:background="@drawable/text_round_bg"
-            android:drawableStart="@drawable/ic_search"
+            android:drawableStart="@drawable/baseline_search_24"
             android:drawablePadding="8dp"
             android:hint="Search your favourite pizza"
             android:padding="12dp"
@@ -102,7 +99,8 @@
             android:layout_marginTop="16dp"
             app:cardCornerRadius="16dp"
             android:background="@color/transparent"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -128,7 +126,7 @@
                     android:background="@drawable/btn_black_rounded_ripple"
                     android:text="Order Now"
                     android:textColor="@color/white"
-                    android:textSize="10dp" />
+                    android:textSize="10sp" />
 
                 <ImageView
                     android:id="@+id/ivOfferPizza"
@@ -160,7 +158,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="10dp">
+            app:cardElevation="10dp"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -217,7 +216,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -274,12 +274,15 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
+        <!-- Pizza Item 3 -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="10dp">
+            app:cardElevation="10dp"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -336,6 +339,15 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
+        <!-- Recycler to list menu items -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/menuContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:clipToPadding="false"
+            android:padding="16dp" />
 
     </LinearLayout>
 </ScrollView>
