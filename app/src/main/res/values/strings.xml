@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PizzaMania</string>
-    <string name="google_maps_key">YOUR_GOOGLE_MAPS_API_KEY_HERE</string>
+    <string name="google_maps_key">AIzaSyDszLHmz87VqKwMpuGNphUD23NL4miVhTI</string>
 
     <string-array name="branches">
         <item>Colombo</item>

@@ -20,6 +20,9 @@
         <!-- If you have a custom Application class, add:
              android:name=".PizzaManiaApp"
              and ensure that class exists in com.pizzamania -->
+        <activity
+            android:name="com.example.pizzamaniaapp.app.ui.auth.RegisterActivity"
+            android:exported="false" />
 
         <activity
             android:name=".ui.admin.AdminDashboardActivity"
