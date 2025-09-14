@@ -19,28 +19,24 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Mehema layout file eka nam karala thiyenawanam:
         setContentView(R.layout.activity_register)
-        // Oyage XML file eka wenama namen save karala thiyenawanam,
-        // me line eka e layout name ekata wenas karanna.
 
-        val etFullName = findViewById<TextInputEditText>(R.id.etName2)   // Full name (oyage XML eken)
-        val etPassword = findViewById<TextInputEditText>(R.id.etName)    // Password (XML id etName)
-        val etEmail = findViewById<TextInputEditText>(R.id.etEmail)      // Email
-        val btnSave = findViewById<Button>(R.id.button)                  // Save button
+        val etFullName = findViewById<TextInputEditText>(R.id.etName2)
+        val etPassword = findViewById<TextInputEditText>(R.id.etName)
+        val etEmail = findViewById<TextInputEditText>(R.id.etEmail)
+        val btnSave = findViewById<Button>(R.id.button)
 
         val btnBack = findViewById<ImageButton>(R.id.btnBack)
         val btnNext = findViewById<ImageButton>(R.id.btnNext)
 
         btnBack.setOnClickListener { finish() }
-        btnNext.setOnClickListener { btnSave.performClick() } // "Next" -> Save kiyala trigger karanawa
+        btnNext.setOnClickListener { btnSave.performClick() }
 
         btnSave.setOnClickListener {
             val name = etFullName.text?.toString()?.trim().orEmpty()
             val email = etEmail.text?.toString()?.trim().orEmpty()
             val password = etPassword.text?.toString().orEmpty()
 
-            // Validate
             when {
                 name.isEmpty() -> { etFullName.error = "Enter your name"; etFullName.requestFocus(); return@setOnClickListener }
                 email.isEmpty() -> { etEmail.error = "Enter your email"; etEmail.requestFocus(); return@setOnClickListener }
@@ -50,12 +46,9 @@ class RegisterActivity : AppCompatActivity() {
 
             btnSave.isEnabled = false
 
-            // Create Firebase Auth user
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener { result ->
                     val uid = result.user?.uid ?: return@addOnSuccessListener
-
-                    // Save profile to Firestore
                     val userDoc = mapOf(
                         "name" to name,
                         "email" to email,
@@ -65,15 +58,7 @@ class RegisterActivity : AppCompatActivity() {
                     db.collection("users").document(uid).set(userDoc)
                         .addOnSuccessListener {
                             Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show()
-                            // Success flow:
-                            // 1) Just close and go back to Login
-                            // finish()
-
-                            // 2) Or, keep user logged-in and go to HomeActivity if you have it:
-                            // startActivity(Intent(this, HomeActivity::class.java))
-                            // finish()
-
-                            finish() // default: back to previous screen
+                            finish()
                         }
                         .addOnFailureListener { e ->
                             Toast.makeText(this, "Registered, but failed to save profile: ${e.message}", Toast.LENGTH_LONG).show()
