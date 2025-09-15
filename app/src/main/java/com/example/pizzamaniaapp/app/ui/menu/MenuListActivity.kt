@@ -1,5 +1,6 @@
 package com.example.pizzamaniaapp.app.ui.menu
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +23,7 @@ class MenuListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_list)
 
-        // 🔹 Top bar (back arrow)
+        // 🔹 Top bar with back arrow
         val toolbar = findViewById<MaterialToolbar>(R.id.topAppBar)
         toolbar.setNavigationOnClickListener { finish() }
 
@@ -31,7 +32,14 @@ class MenuListActivity : AppCompatActivity() {
         recycler.layoutManager = LinearLayoutManager(this)
 
         val adapter = MenuAdapter { item ->
-            Toast.makeText(this, "Clicked ${item.name}", Toast.LENGTH_SHORT).show()
+            // 🔹 On item click → Go to detail page
+            val i = Intent(this, MenuDetailActivity::class.java).apply {
+                putExtra("name", item.name)
+                putExtra("desc", item.description)
+                putExtra("price", item.price)
+                putExtra("imgUrl", item.imageUrl)
+            }
+            startActivity(i)
         }
         recycler.adapter = adapter
 
@@ -42,11 +50,10 @@ class MenuListActivity : AppCompatActivity() {
             PizzaApp.database.menuCacheDao()
         )
 
-        // 🔹 Load data
+        // 🔹 Load data from repo
         lifecycleScope.launch {
             try {
                 val branchId = intent.getStringExtra("branchId") ?: run {
-                    // fetch any default branch if none passed
                     val b = Firebase.firestore.collection("branches").get().await()
                     b.documents.firstOrNull()?.id ?: return@launch
                 }
@@ -54,6 +61,11 @@ class MenuListActivity : AppCompatActivity() {
                 adapter.submit(list)
             } catch (e: Exception) {
                 e.printStackTrace()
+                Toast.makeText(
+                    this@MenuListActivity,
+                    "Error loading menu",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

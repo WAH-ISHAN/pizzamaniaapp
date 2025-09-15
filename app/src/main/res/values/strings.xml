@@ -3,8 +3,16 @@
     <string name="app_name">PizzaMania</string>
     <string name="google_maps_key">AIzaSyDszLHmz87VqKwMpuGNphUD23NL4miVhTI</string>
 
-    <string-array name="branches">
-        <item>Colombo</item>
-        <item>Galle</item>
-    </string-array>
+
+
+        <!-- Other strings -->
+
+        <string-array name="branches_array">
+            <item>Colombo</item>
+            <item>Galle</item>
+        </string-array>
+
 </resources>
+
+<!-- other strings -->
+

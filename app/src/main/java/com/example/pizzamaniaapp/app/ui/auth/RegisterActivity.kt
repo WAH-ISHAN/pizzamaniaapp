@@ -58,7 +58,7 @@ class RegisterActivity : AppCompatActivity() {
                     db.collection("users").document(uid).set(userDoc)
                         .addOnSuccessListener {
                             Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show()
-                            finish()
+                            finish() // Back to Login
                         }
                         .addOnFailureListener { e ->
                             Toast.makeText(this, "Registered, but failed to save profile: ${e.message}", Toast.LENGTH_LONG).show()
