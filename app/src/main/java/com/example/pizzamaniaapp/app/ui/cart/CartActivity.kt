@@ -30,7 +30,7 @@ class CartActivity : AppCompatActivity() {
                 container.addView(empty)
             } else {
                 items.forEach {
-                    val row = layoutInflater.inflate(R.layout.row_cart_simple, container, false)
+                    val row = layoutInflater.inflate(R.layout.row_menu_item, container, false)
                     row.findViewById<TextView>(R.id.tvNameQty).text = "${it.name} x ${it.qty}"
                     row.findViewById<TextView>(R.id.tvPrice).text = "Rs. ${"%.2f".format(it.price * it.qty)}"
                     container.addView(row)

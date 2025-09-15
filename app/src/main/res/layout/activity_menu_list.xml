@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/pizza_new">
+
+    <!-- 🔹 Top AppBar with back button -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="34dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/transparent"
+        android:title="Pizza Mania"
+        android:titleTextColor="@android:color/white"
+        app:navigationIcon="@drawable/arrowback" />
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:id="@+id/tvPopular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/text_round_bg"
+            android:padding="8dp"
+            android:text="Popular Pizza"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSeeAll"
+            android:layout_width="72dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:padding="4dp"
+            android:text="See All"
+            android:textColor="@color/orange"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Category Tabs -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:paddingHorizontal="16dp"
+            android:text="All Pizzas"
+            android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:paddingHorizontal="16dp"
+            android:text="Vegetarian"
+            android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:paddingHorizontal="16dp"
+            android:text="Specials"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Search Bar -->
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/text_round_bg"
+        android:drawableStart="@drawable/baseline_search_24"
+        android:drawablePadding="8dp"
+        android:hint="Search your favourite pizza"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <!-- Special Offer Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvOfferTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Special Offer"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvOfferDesc"
+                android:layout_width="159dp"
+                android:layout_height="43dp"
+                android:layout_below="@id/tvOfferTitle"
+                android:layout_marginTop="8dp"
+                android:fontFamily="serif-monospace"
+                android:text="Discount 20% off applied at checkout"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOrderNow"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_below="@id/tvOfferDesc"
+                android:layout_marginTop="24dp"
+                android:paddingHorizontal="24dp"
+                android:text="Order Now"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:backgroundTint="@color/black"
+                app:rippleColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/ivOfferPizza"
+                android:layout_width="130dp"
+                android:layout_height="144dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="27dp"
+                android:background="@drawable/pizzaoffer"
+                android:contentDescription="Offer Pizza" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Recycler for dynamic Pizza menu -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/menuContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        android:nestedScrollingEnabled="false"
+        android:clipToPadding="false"
+        android:padding="8dp" />
+
+</LinearLayout>

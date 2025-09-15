@@ -58,7 +58,7 @@
                         android:id="@+id/etAdminBranch"
                         android:layout_width="match_parent"
                         android:layout_height="53dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="26dp"
                         android:background="@drawable/text_round_bg"
                         android:cursorVisible="false"
                         android:entries="@array/branches"

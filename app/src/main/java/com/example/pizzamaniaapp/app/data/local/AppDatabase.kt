@@ -2,8 +2,6 @@ package com.pizzamania.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.pizzamania.data.local.CartItemEntity
-import com.pizzamania.data.local.MenuCacheEntity
 
 @Database(
     entities = [CartItemEntity::class, MenuCacheEntity::class],
