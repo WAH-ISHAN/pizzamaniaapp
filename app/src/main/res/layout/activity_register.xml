@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -76,15 +77,17 @@
             <ImageView
                 android:id="@+id/ivPizza"
                 android:layout_width="186dp"
-                android:layout_height="185dp"
+                android:layout_height="153dp"
                 android:layout_marginTop="-20dp"
                 android:contentDescription="Pizza illustration"
                 android:elevation="4dp"
                 android:src="@drawable/mainimage"
                 app:layout_constraintBottom_toBottomOf="@id/tvRegisterTitle"
                 app:layout_constraintEnd_toEndOf="@id/tvRegisterTitle"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@id/tvRegisterTitle"
-                app:layout_constraintTop_toTopOf="@id/tvRegisterTitle" />
+                app:layout_constraintTop_toTopOf="@id/tvRegisterTitle"
+                app:layout_constraintVertical_bias="0.0" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etName2"
@@ -135,6 +138,8 @@
                 android:background="@drawable/btn_black_rounded_ripple"
                 android:gravity="center"
                 android:text="Save"
+                app:backgroundTint="@color/black"
+                app:rippleColor="@color/white"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 app:layout_constraintTop_toBottomOf="@id/etEmail"

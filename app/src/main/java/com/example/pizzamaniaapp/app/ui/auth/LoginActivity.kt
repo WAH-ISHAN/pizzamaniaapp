@@ -15,21 +15,26 @@ import com.pizzamania.R
 import com.pizzamania.ui.admin.AdminDashboardActivity
 import com.example.pizzamaniaapp.app.ui.home.HomeActivity
 import com.example.pizzamaniaapp.app.ui.auth.RegisterActivity
+import com.example.pizzamaniaapp.ui.admin.AdminRegisterActivity
 
 class LoginActivity : AppCompatActivity() {
 
     private val auth get() = Firebase.auth
     private val db get() = Firebase.firestore
 
-    private var selectedRole: String = "user"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // role switch (optional UI)
-        findViewById<MaterialButton>(R.id.btnAdmin).setOnClickListener { selectedRole = "admin" }
-        findViewById<MaterialButton>(R.id.btnUser).setOnClickListener { selectedRole = "user" }
+        // Admin button -> go to AdminRegisterActivity
+        findViewById<MaterialButton>(R.id.btnAdmin).setOnClickListener {
+            startActivity(Intent(this, AdminRegisterActivity::class.java))
+        }
+
+        // User button -> go to User RegisterActivity
+        findViewById<MaterialButton>(R.id.btnUser).setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
 
         // SIGN IN button
         findViewById<Button>(R.id.btnPrimary).setOnClickListener { view ->
@@ -50,11 +55,9 @@ class LoginActivity : AppCompatActivity() {
                         return@addOnSuccessListener
                     }
 
-                    // get user role from db
                     db.collection("users").document(uid).get()
                         .addOnSuccessListener { doc ->
                             val role = doc.getString("role") ?: "user"
-
                             if (role == "admin") {
                                 startActivity(Intent(this, AdminDashboardActivity::class.java))
                             } else {
@@ -73,9 +76,9 @@ class LoginActivity : AppCompatActivity() {
                 }
         }
 
-        // Register link
+        // Register text now optional
         findViewById<TextView>(R.id.tvRegister).setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            toast("Use User button to register 🙂")
         }
     }
 

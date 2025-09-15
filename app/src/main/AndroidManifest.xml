@@ -29,6 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.pizzamaniaapp.app.ui.menu.MenuDetailActivity"
+            android:exported="false" />
 
         <!-- 🔹 Login -->
         <activity

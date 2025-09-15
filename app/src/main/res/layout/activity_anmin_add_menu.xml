@@ -1,114 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="@drawable/pizza_new">
+    android:background="@drawable/pizza_new"
+    android:padding="12dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="20dp">
+        android:orientation="vertical">
 
         <!-- Back Button -->
         <ImageButton
             android:id="@+id/btnBackDashboard"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/arrowback"
-            android:contentDescription="Back to Dashboard"
-            android:layout_gravity="start"
-            android:layout_marginBottom="16dp"/>
+            android:layout_width="36dp"
+            android:layout_height="35dp"
+            android:background="@drawable/arrowback"
 
-        <!-- Title -->
+            android:contentDescription="Back" />
+
+        <!-- Admin Menu Title -->
         <TextView
             android:id="@+id/tvWelcomeAdmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="Add Menu"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="6dp"
+            android:text="Add / Manage Menu"
             android:textColor="@color/black"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- Branch Selection -->
+        <!-- Branch Selector -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:text="Select Branch"
+            android:textStyle="bold"
             android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="8dp" />
+            android:textColor="@color/black" />
 
         <Spinner
             android:id="@+id/spinnerBranch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/text_round_bg"
-            android:padding="12dp" />
+            android:padding="8dp" />
 
-        <!-- Menu Item Fields -->
+        <!-- Food Details Section -->
         <LinearLayout
             android:id="@+id/menuItemsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/rounded_white_card"
-            android:layout_marginTop="10dp"
-            android:divider="?android:dividerHorizontal"
-            android:showDividers="middle"
-            android:paddingBottom="20dp">
+            android:layout_marginTop="6dp"
+            android:padding="16dp">
 
             <!-- Food Image -->
             <ImageView
-                android:id="@+id/ivAdminProfile"
-                android:layout_width="191dp"
-                android:layout_height="177dp"
+                android:id="@+id/ivAdminFood"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="12dp"
                 android:background="@drawable/cheesepizza"
-                android:contentDescription="Pizza pic"
-                android:padding="8dp" />
+                android:scaleType="centerCrop"
+                android:contentDescription="Food Image" />
+
+            <!-- Choose Image Button -->
+            <Button
+                android:id="@+id/btnChooseImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="Choose Image"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/black" />
 
             <!-- Food Name -->
-            <TextView
-                android:id="@+id/textViewFoodName"
+            <EditText
+                android:id="@+id/etFoodName"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Food Name"
                 android:background="@drawable/text_round_bg"
                 android:padding="10dp"
-                android:text="Food Name"
-                android:textAlignment="center"
                 android:textColor="@color/black" />
 
             <!-- Description -->
-            <TextView
-                android:id="@+id/textViewDescription"
+            <EditText
+                android:id="@+id/etDescription"
                 android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Description"
                 android:background="@drawable/text_round_bg"
+                android:minLines="3"
+                android:gravity="top|start"
                 android:padding="10dp"
-                android:text="Description"
-                android:textAlignment="center"
                 android:textColor="@color/black" />
 
             <!-- Price -->
-            <TextView
-                android:id="@+id/textViewPrice"
+            <EditText
+                android:id="@+id/etPrice"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Price (Rs.)"
                 android:background="@drawable/text_round_bg"
                 android:padding="10dp"
-                android:text="Price"
-                android:textAlignment="center"
+                android:inputType="numberDecimal"
                 android:textColor="@color/black" />
+
+            <!-- Toppings Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Toppings"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/toppingsContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" />
+
+            </HorizontalScrollView>
+
+            <!-- Add Topping Button -->
+            <Button
+                android:id="@+id/btnAddTopping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Add New Topping"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/black" />
 
         </LinearLayout>
 
@@ -134,7 +178,7 @@
                 app:cornerRadius="25dp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnLogout"
+                android:id="@+id/btnRemoveMenuItem"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
                 android:layout_weight="1"
@@ -144,7 +188,6 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 app:cornerRadius="25dp" />
-
         </LinearLayout>
 
     </LinearLayout>

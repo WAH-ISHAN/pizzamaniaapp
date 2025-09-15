@@ -8,27 +8,53 @@ class AuthRepo(
     private val auth: FirebaseAuth,
     private val db: FirebaseFirestore
 ) {
-    suspend fun registerAdmin(email: String, pass: String, branchId: String) = runCatching {
+    /**
+     * Register Admin and return UID
+     */
+    suspend fun registerAdmin(email: String, pass: String, branchId: String): Result<String> = runCatching {
         val cred = auth.createUserWithEmailAndPassword(email, pass).await()
-        val uid = cred.user!!.uid
+        val uid = cred.user?.uid ?: throw IllegalStateException("UID missing")
+
         db.collection("users").document(uid).set(
-            mapOf("email" to email, "role" to "admin", "branchId" to branchId)
+            mapOf(
+                "email" to email,
+                "role" to "admin",
+                "branchId" to branchId
+            )
         ).await()
+
+        uid // return uid on success
     }
 
-    suspend fun registerUser(name: String, email: String, pass: String) = runCatching {
+    /**
+     * Register User and return UID
+     */
+    suspend fun registerUser(name: String, email: String, pass: String): Result<String> = runCatching {
         val cred = auth.createUserWithEmailAndPassword(email, pass).await()
-        val uid = cred.user!!.uid
+        val uid = cred.user?.uid ?: throw IllegalStateException("UID missing")
+
         db.collection("users").document(uid).set(
-            mapOf("email" to email, "name" to name, "role" to "user")
+            mapOf(
+                "email" to email,
+                "name" to name,
+                "role" to "user"
+            )
         ).await()
+
+        uid // return uid on success
     }
 
-    suspend fun signIn(email: String, pass: String) = runCatching {
+    /**
+     * Sign in and return UID
+     */
+    suspend fun signIn(email: String, pass: String): Result<String> = runCatching {
         auth.signInWithEmailAndPassword(email, pass).await()
-        auth.currentUser!!.uid
+        auth.currentUser?.uid ?: throw IllegalStateException("UID missing")
     }
 
+    /**
+     * Get current role + branchId
+     */
     suspend fun currentRoleBranch(): Pair<String, String?> {
         val uid = auth.currentUser?.uid ?: return "guest" to null
         val snap = db.collection("users").document(uid).get().await()
