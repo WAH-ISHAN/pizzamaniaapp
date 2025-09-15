@@ -23,7 +23,7 @@
                 android:id="@+id/ivLogo"
                 android:layout_width="311dp"
                 android:layout_height="171dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="14dp"
                 android:contentDescription="Pizza Mania logo"
                 android:src="@drawable/mainimage"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -90,18 +90,6 @@
                     app:cornerRadius="30dp" />
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPassword"
-                android:layout_width="355dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/text_round_bg"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:textAlignment="center"
-                app:layout_constraintTop_toBottomOf="@id/roleRow"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
@@ -112,7 +100,20 @@
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:textAlignment="center"
-                app:layout_constraintTop_toBottomOf="@id/etPassword"
+                app:layout_constraintTop_toBottomOf="@id/roleRow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="355dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/text_round_bg"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@id/etEmail"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -120,7 +121,8 @@
                 android:id="@+id/tvForgot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="4dp"
                 android:text="Forgot?"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -10,14 +10,12 @@ plugins {
 
 android {
     namespace = "com.pizzamania"
-    compileSdk = 34
-
-
+    compileSdk = 35   // ✅ Updated
 
     defaultConfig {
         applicationId = "com.pizzamania"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35   // ✅ updated to match compileSdk
         versionCode = 1
         versionName = "1.0"
     }
@@ -36,23 +34,24 @@ android {
     }
 }
 
-tasks.withType(KotlinCompile::class.java).configureEach {
+tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions.jvmTarget = "17"
 }
 
 dependencies {
     // Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
+
     // Firebase KTX
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
 
-    // Coroutines + Tasks.await()
+    // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
 
-    // Maps & Location
+    // Google Play Services
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation("com.google.android.gms:play-services-location:21.3.0")
 
@@ -71,6 +70,7 @@ dependencies {
     // Room
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
+    implementation(libs.activity)
     kapt("androidx.room:room-compiler:2.6.1")
 
     // Glide
@@ -86,5 +86,4 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
 }

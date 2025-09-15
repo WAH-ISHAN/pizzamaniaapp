@@ -27,29 +27,34 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // role switch (optional UI)
         findViewById<MaterialButton>(R.id.btnAdmin).setOnClickListener { selectedRole = "admin" }
         findViewById<MaterialButton>(R.id.btnUser).setOnClickListener { selectedRole = "user" }
 
-        findViewById<Button>(R.id.btnPrimary).setOnClickListener {
+        // SIGN IN button
+        findViewById<Button>(R.id.btnPrimary).setOnClickListener { view ->
             val email = findViewById<TextInputEditText>(R.id.etEmail).text?.toString()?.trim().orEmpty()
             val pass = findViewById<TextInputEditText>(R.id.etPassword).text?.toString().orEmpty()
 
             if (email.isEmpty()) { toast("Enter email"); return@setOnClickListener }
             if (pass.isEmpty()) { toast("Enter password"); return@setOnClickListener }
 
-            it.isEnabled = false
+            view.isEnabled = false
+
             auth.signInWithEmailAndPassword(email, pass)
                 .addOnSuccessListener { res ->
                     val uid = res.user?.uid
                     if (uid == null) {
-                        it.isEnabled = true
+                        view.isEnabled = true
                         toast("Login failed: no user")
                         return@addOnSuccessListener
                     }
-                    // Fetch role
+
+                    // get user role from db
                     db.collection("users").document(uid).get()
                         .addOnSuccessListener { doc ->
                             val role = doc.getString("role") ?: "user"
+
                             if (role == "admin") {
                                 startActivity(Intent(this, AdminDashboardActivity::class.java))
                             } else {
@@ -58,16 +63,17 @@ class LoginActivity : AppCompatActivity() {
                             finish()
                         }
                         .addOnFailureListener { e ->
-                            it.isEnabled = true
+                            view.isEnabled = true
                             toast("Failed to get profile: ${e.message}")
                         }
                 }
                 .addOnFailureListener { e ->
-                    it.isEnabled = true
+                    view.isEnabled = true
                     toast(e.message ?: "Login failed")
                 }
         }
 
+        // Register link
         findViewById<TextView>(R.id.tvRegister).setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }

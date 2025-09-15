@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -11,39 +12,58 @@
         android:required="false" />
 
     <application
+        android:name=".app.PizzaApp"
         android:allowBackup="true"
-        android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PizzaMania">
-        <!-- If you have a custom Application class, add:
-             android:name=".PizzaManiaApp"
-             and ensure that class exists in com.pizzamania -->
-        <activity
-            android:name="com.example.pizzamaniaapp.app.ui.auth.RegisterActivity"
-            android:exported="false" />
 
+        <!-- 🔹 MainActivity = Launcher -->
         <activity
-            android:name=".ui.admin.AdminDashboardActivity"
-            android:exported="true" />
-
-        <activity
-            android:name=".ui.admin.AddMenuActivity"
-            android:exported="false" />
-
-        <activity
-            android:name="com.example.pizzamaniaapp.ui.admin.AdminRegisterActivity"
-            android:exported="false" />
-
-        <activity
-            android:name="com.example.pizzamaniaapp.ui.LoginActivity"
+            android:name="com.example.pizzamaniaapp.app.ui.auth.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 🔹 Login -->
+        <activity
+            android:name="com.example.pizzamaniaapp.ui.LoginActivity"
+            android:exported="false" />
+
+        <!-- 🔹 Register -->
+        <activity
+            android:name="com.example.pizzamaniaapp.app.ui.auth.RegisterActivity"
+            android:exported="false" />
+
+        <!-- 🔹 Admin Dashboard -->
+        <activity
+            android:name="com.pizzamania.ui.admin.AdminDashboardActivity"
+            android:exported="true" />
+
+        <!-- 🔹 Admin Add Menu -->
+        <activity
+            android:name="com.pizzamania.ui.admin.AddMenuActivity"
+            android:exported="false" />
+
+        <!-- 🔹 Admin Register -->
+        <activity
+            android:name="com.example.pizzamaniaapp.ui.admin.AdminRegisterActivity"
+            android:exported="false" />
+
+        <!-- 🔹 Home Activity -->
+        <activity
+            android:name="com.example.pizzamaniaapp.app.ui.home.HomeActivity"
+            android:exported="true" />
+
+        <!-- 🔹 Menu List -->
+        <activity
+            android:name="com.example.pizzamaniaapp.app.ui.menu.MenuListActivity"
+            android:exported="true" />
 
     </application>
 </manifest>

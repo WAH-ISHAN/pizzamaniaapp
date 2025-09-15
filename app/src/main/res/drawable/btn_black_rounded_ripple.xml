@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="#33FFFFFF"> <!-- subtle white ripple (alpha) -->
+    android:color="@android:color/white"> <!-- ripple highlight color -->
 
-    <!-- normal background -->
-    <item>
+    <!-- Background Shape -->
+    <item android:id="@android:id/background">
         <shape android:shape="rectangle">
-            <solid android:color="#000000"/>         <!-- black -->
-            <corners android:radius="28dp"/>         <!-- rounded corners -->
+            <solid android:color="#020202"/>  <!-- black background -->
+            <corners android:radius="28dp"/>  <!-- rounded corners -->
             <padding
                 android:left="16dp"
                 android:top="10dp"
@@ -15,11 +15,11 @@
         </shape>
     </item>
 
-    <!-- optional pressed overlay (semi-transparent white) -->
+    <!-- Mask (defines ripple area) -->
     <item android:id="@android:id/mask">
         <shape android:shape="rectangle">
-            <solid android:color="#80FFFFFF"/>
-            <corners android:radius="24dp"/>
+            <solid android:color="#FFFFFFFF"/> <!-- must be opaque -->
+            <corners android:radius="28dp"/>   <!-- same radius -->
         </shape>
     </item>
 </ripple>
