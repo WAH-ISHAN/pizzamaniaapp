@@ -6,8 +6,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.pizzamania.R
-import com.pizzamania.app.PizzaApp
+import com.example.pizzamaniaapp.R
+import com.example.pizzamaniaapp.app.PizzaApp
 import com.pizzamania.data.model.MenuItem
 import com.pizzamania.data.repo.CartRepo
 import com.pizzamania.util.toast

@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.pizzamania.R
+import com.example.pizzamaniaapp.R
 import com.pizzamania.data.model.MenuItem
 
 class MenuAdapter(

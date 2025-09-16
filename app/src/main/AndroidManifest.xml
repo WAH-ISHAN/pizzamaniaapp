@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pizzamania">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -8,15 +7,21 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <!-- Storage permissions -->
-    <!-- Required for Android 13+ -->
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
-    <!-- Backward compatibility for Android 12 and below -->
+
+    <!-- Storage / Media (Android 13+) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <!-- Backward compatibility for Android <=12 -->
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
 
-    <!-- Camera is optional -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <!-- Optional (not mandatory) -->
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
+
+    <!-- Camera optional hardware -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -30,7 +35,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PizzaMania">
 
-        <!-- Launcher -->
+        <!-- Profile Activity -->
+        <activity
+            android:name="com.example.pizzamaniaapp.app.ui.auth.ActivityProfile"
+            android:exported="false" />
+
+        <!-- Launcher / Main -->
         <activity
             android:name="com.example.pizzamaniaapp.app.ui.auth.MainActivity"
             android:exported="true">
@@ -57,12 +67,10 @@
 
         <!-- Admin Dashboard -->
         <activity
-            android:name="com.pizzamania.ui.admin.AdminDashboardActivity"
+            android:name="com.example.pizzamaniaapp.ui.admin.AdminDashboardActivity"
             android:exported="true" />
-
-        <!-- Admin Add Menu -->
         <activity
-            android:name="com.pizzamania.ui.admin.AdminAddMenuActivity"
+            android:name="com.example.pizzamaniaapp.ui.admin.AdminAddMenuActivity"
             android:exported="false" />
 
         <!-- Admin Register -->
@@ -70,7 +78,7 @@
             android:name="com.example.pizzamaniaapp.ui.admin.AdminRegisterActivity"
             android:exported="false" />
 
-        <!-- Home Activity -->
+        <!-- Home -->
         <activity
             android:name="com.example.pizzamaniaapp.app.ui.home.HomeActivity"
             android:exported="true" />
@@ -80,7 +88,7 @@
             android:name="com.example.pizzamaniaapp.app.ui.menu.MenuListActivity"
             android:exported="true" />
 
-        <!-- FileProvider -->
+        <!-- FileProvider (for camera / media sharing) -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -90,5 +98,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
     </application>
 </manifest>

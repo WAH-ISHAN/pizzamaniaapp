@@ -1,4 +1,4 @@
-package com.pizzamania.ui.admin
+package com.example.pizzamaniaapp.ui.admin
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.pizzamania.R
+import com.example.pizzamaniaapp.R
 import com.example.pizzamaniaapp.app.ui.order.AdminOrdersActivity
 import com.example.pizzamaniaapp.app.ui.menu.MenuListActivity
 

@@ -15,7 +15,7 @@
 
         <!-- Back Button -->
         <ImageButton
-            android:id="@+id/btnBack"
+            android:id="@+id/btnPBackarrow"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@android:color/transparent"
@@ -37,14 +37,6 @@
             android:layout_gravity="center" />
 
         <!-- Next Button -->
-        <ImageButton
-            android:id="@+id/btnNext"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/arrownext"
-            android:contentDescription="Next"
-            android:layout_gravity="end|center_vertical" />
     </FrameLayout>
 
     <!-- Profile Image -->
@@ -58,7 +50,7 @@
 
     <!-- Capture Profile Button -->
     <Button
-        android:id="@+id/btnCapture"
+        android:id="@+id/btnCaptureP"
         android:layout_width="232dp"
         android:layout_height="46dp"
         android:layout_marginTop="7dp"
@@ -168,7 +160,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnGoogle"
+                android:id="@+id/btnSave"
                 android:layout_width="0dp"
                 android:layout_height="44dp"
                 android:layout_weight="1"
@@ -182,7 +174,7 @@
                 android:layout_height="wrap_content" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnFacebook"
+                android:id="@+id/btnRemoveAcc"
                 android:layout_width="0dp"
                 android:layout_height="44dp"
                 android:layout_weight="1"

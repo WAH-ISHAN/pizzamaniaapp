@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
-import com.pizzamania.R
+import com.example.pizzamaniaapp.R
 import com.pizzamania.data.repo.AuthRepo
 import com.pizzamania.util.toast
 import kotlinx.coroutines.launch
