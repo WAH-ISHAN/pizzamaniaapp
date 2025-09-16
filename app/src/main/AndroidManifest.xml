@@ -75,6 +75,15 @@
         <activity
             android:name="com.example.pizzamaniaapp.app.ui.home.HomeActivity"
             android:exported="true" />
+        <!-- map -->
+        <activity
+            android:name=".app.ui.map.BranchMapActivity"
+            android:exported="true" />
+
+        <!-- Google Maps API Key -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
 
         <!-- Menu List -->
         <activity

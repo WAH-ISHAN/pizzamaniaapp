@@ -22,8 +22,10 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        findViewById<Button>(R.id.btnMap).setOnClickListener {
+        val btnBranchMap = findViewById<Button>(R.id.btnMap)
+        btnBranchMap.setOnClickListener {
             startActivity(Intent(this, BranchMapActivity::class.java))
+
         }
 
         findViewById<Button>(R.id.btnProfile).setOnClickListener {

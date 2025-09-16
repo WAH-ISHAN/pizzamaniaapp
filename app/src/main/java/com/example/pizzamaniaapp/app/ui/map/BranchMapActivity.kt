@@ -25,12 +25,11 @@ import kotlinx.coroutines.launch
 class BranchMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
-    private var mapReady = false
-
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var fusedLocationClient: FusedLocationProviderClient? = null
     private var locationCallback: LocationCallback? = null
     private var hasCenteredOnUser = false
 
+    // Runtime permission launcher
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { perms ->
             val granted = perms[Manifest.permission.ACCESS_FINE_LOCATION] == true ||
@@ -50,33 +49,32 @@ class BranchMapActivity : AppCompatActivity(), OnMapReadyCallback {
         val frag = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         frag.getMapAsync(this)
 
-        // 🔙 Back Arrow → finish this activity and return to Home
-        findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
-            finish()
-        }
+        // 🔙 Back button
+        findViewById<ImageButton>(R.id.btnBack).setOnClickListener { finish() }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-        mapReady = true
 
+        // Setup options
         map.uiSettings.isZoomControlsEnabled = true
         map.uiSettings.isMyLocationButtonEnabled = true
 
-        // Load branches from Firestore repo
+        // Fetch branches from Firestore
         lifecycleScope.launch {
             val branches = BranchRepo(Firebase.firestore).getBranches()
             branches.forEach {
                 val pos = LatLng(it.lat, it.lng)
-                map.addMarker(MarkerOptions().position(pos).title(it.name).snippet(it.address))
+                map.addMarker(
+                    MarkerOptions()
+                        .position(pos)
+                        .title(it.name)
+                        .snippet(it.address)
+                )
             }
-            // If no location permission yet, center at first branch
-            if (!hasLocationPermission()) {
-                branches.firstOrNull()?.let {
-                    map.moveCamera(
-                        CameraUpdateFactory.newLatLngZoom(LatLng(it.lat, it.lng), 10f)
-                    )
-                }
+            // Default camera → first branch, if user hasn’t granted location
+            branches.firstOrNull()?.let {
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(it.lat, it.lng), 10f))
             }
         }
 
@@ -93,6 +91,7 @@ class BranchMapActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    /** Helper: check if user granted location */
     private fun hasLocationPermission(): Boolean {
         return ActivityCompat.checkSelfPermission(
             this, Manifest.permission.ACCESS_FINE_LOCATION
@@ -102,44 +101,47 @@ class BranchMapActivity : AppCompatActivity(), OnMapReadyCallback {
                 ) == PackageManager.PERMISSION_GRANTED
     }
 
+    /** Enable blue dot safely (avoid SecurityException) */
     private fun enableMyLocation() {
-        if (!hasLocationPermission()) return
-        map.isMyLocationEnabled = true
+        if (hasLocationPermission()) {
+            try {
+                map.isMyLocationEnabled = true  // ✅ safe now
+            } catch (e: SecurityException) {
+                e.printStackTrace()
+            }
+        }
     }
 
+    /** Start receiving user GPS updates */
     private fun startLocationUpdates() {
         if (!hasLocationPermission()) return
 
-        val request = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 5000L)
-            .setMinUpdateIntervalMillis(2000L)
-            .setWaitForAccurateLocation(false)
-            .build()
+        val request = LocationRequest.Builder(
+            Priority.PRIORITY_HIGH_ACCURACY,
+            5000L
+        ).setMinUpdateIntervalMillis(2000L).build()
 
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(result: LocationResult) {
-                val loc = result.lastLocation ?: return
-                val userLatLng = LatLng(loc.latitude, loc.longitude)
-
-                if (!hasCenteredOnUser) {
-                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 14f))
-                    hasCenteredOnUser = true
+                result.lastLocation?.let {
+                    val userLatLng = LatLng(it.latitude, it.longitude)
+                    if (!hasCenteredOnUser) {
+                        map.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 14f))
+                        hasCenteredOnUser = true
+                    }
                 }
             }
         }
 
-        fusedLocationClient.requestLocationUpdates(
+        fusedLocationClient?.requestLocationUpdates(
             request,
             locationCallback as LocationCallback,
             Looper.getMainLooper()
         )
     }
 
-    private fun stopLocationUpdates() {
-        locationCallback?.let { fusedLocationClient.removeLocationUpdates(it) }
-    }
-
     override fun onStop() {
         super.onStop()
-        stopLocationUpdates()
+        locationCallback?.let { fusedLocationClient?.removeLocationUpdates(it) }
     }
 }
