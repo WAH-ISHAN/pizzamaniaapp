@@ -10,6 +10,7 @@ import com.example.pizzamaniaapp.ui.LoginActivity
 import com.example.pizzamaniaapp.app.ui.menu.MenuListActivity
 import com.example.pizzamaniaapp.app.ui.auth.ActivityProfile
 import com.example.pizzamaniaapp.app.ui.map.BranchMapActivity
+import com.example.pizzamaniaapp.app.ui.order.PlaceOrderActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -33,8 +34,9 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, MenuListActivity::class.java))
         }
 
+        // ✅ FIXED: Order button goes directly to PlaceOrderActivity
         findViewById<Button>(R.id.btnSeed2).setOnClickListener {
-            Toast.makeText(this, "Order page opening...", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, PlaceOrderActivity::class.java))
         }
 
         findViewById<Button>(R.id.btnLogout).setOnClickListener {
