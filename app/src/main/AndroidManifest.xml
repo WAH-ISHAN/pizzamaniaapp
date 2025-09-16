@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Permissions -->
+    <!-- INTERNET required for Firebase / APIs -->
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Location access -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+
+    <!-- Camera access -->
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
 
-
-    <!-- Storage / Media (Android 13+) -->
+    <!-- Media / Storage access -->
+    <!-- For Android 13+ scoped storage images -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-    <!-- Backward compatibility for Android <=12 -->
+    <!-- For Android <=12 -->
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
-    <!-- Optional (not mandatory) -->
-    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
-
-    <!-- Camera optional hardware -->
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" />
 
     <application
         android:name=".app.PizzaApp"
@@ -34,11 +29,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PizzaMania">
-
-        <!-- Profile Activity -->
-        <activity
-            android:name="com.example.pizzamaniaapp.app.ui.auth.ActivityProfile"
-            android:exported="false" />
 
         <!-- Launcher / Main -->
         <activity
@@ -50,20 +40,25 @@
             </intent-filter>
         </activity>
 
-        <!-- Menu Details -->
+        <!-- Profile Activity -->
+        <activity
+            android:name="com.example.pizzamaniaapp.app.ui.auth.ActivityProfile"
+            android:exported="false" />
+
+        <!-- Menu Details (internal navigation) -->
         <activity
             android:name="com.example.pizzamaniaapp.app.ui.menu.ItemDetailActivity"
-            android:exported="false" />
+            android:exported="true" />
 
-        <!-- Login -->
+        <!-- Login Screen -->
         <activity
             android:name="com.example.pizzamaniaapp.ui.LoginActivity"
-            android:exported="false" />
+            android:exported="true" />
 
-        <!-- Register -->
+        <!-- Register Screen -->
         <activity
             android:name="com.example.pizzamaniaapp.app.ui.auth.RegisterActivity"
-            android:exported="false" />
+            android:exported="true" />
 
         <!-- Admin Dashboard -->
         <activity
@@ -71,12 +66,10 @@
             android:exported="true" />
         <activity
             android:name="com.example.pizzamaniaapp.ui.admin.AdminAddMenuActivity"
-            android:exported="false" />
-
-        <!-- Admin Register -->
+            android:exported="true" />
         <activity
             android:name="com.example.pizzamaniaapp.ui.admin.AdminRegisterActivity"
-            android:exported="false" />
+            android:exported="true" />
 
         <!-- Home -->
         <activity
@@ -88,7 +81,18 @@
             android:name="com.example.pizzamaniaapp.app.ui.menu.MenuListActivity"
             android:exported="true" />
 
-        <!-- FileProvider (for camera / media sharing) -->
+        <!-- Order related activities -->
+        <activity
+            android:name="com.example.pizzamaniaapp.app.ui.order.PlaceOrderActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.pizzamaniaapp.app.ui.order.AdminOrdersActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.pizzamaniaapp.app.ui.cart.CartActivity"
+            android:exported="true" />
+
+        <!-- FileProvider: Required for Camera / Sharing -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"

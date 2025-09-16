@@ -6,8 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "cart_items")
 data class CartItemEntity(
-    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    @PrimaryKey val menuId: String,   // menu item ID from Firestore/Menu
     val name: String,
     val price: Double,
+    val imageUrl: String?,
     val qty: Int
 )
