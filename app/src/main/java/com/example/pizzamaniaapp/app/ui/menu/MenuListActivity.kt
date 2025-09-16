@@ -11,8 +11,8 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.pizzamania.R
-import com.pizzamania.app.PizzaApp
+import com.example.pizzamaniaapp.R
+import com.example.pizzamaniaapp.app.PizzaApp
 import com.pizzamania.data.repo.MenuRepo
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await

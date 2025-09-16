@@ -7,9 +7,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.pizzamania.app.PizzaApp
+import com.example.pizzamaniaapp.app.PizzaApp
 import com.example.pizzamaniaapp.app.ui.order.PlaceOrderActivity
-import com.pizzamania.R
+import com.example.pizzamaniaapp.R
 import com.pizzamania.data.repo.CartRepo
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package com.pizzamania.ui.admin
+package com.example.pizzamaniaapp.ui.admin
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -16,8 +16,8 @@ import com.google.android.material.chip.ChipGroup
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import com.pizzamania.R
-import com.pizzamania.app.PizzaApp
+import com.example.pizzamaniaapp.R
+import com.example.pizzamaniaapp.app.PizzaApp
 import com.pizzamania.data.repo.MenuRepo
 import kotlinx.coroutines.launch
 import java.io.File

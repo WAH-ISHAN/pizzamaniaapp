@@ -1,11 +1,12 @@
-package com.pizzamania.app
+package com.example.pizzamaniaapp.app
 
 import android.app.Application
 import androidx.room.Room
+import com.google.firebase.FirebaseApp
 import com.pizzamania.data.local.PizzaDatabase
 
 /**
- * Global Application class - initializes Room DB once.
+ * Global Application class - initializes Room DB + Firebase once.
  */
 class PizzaApp : Application() {
 
@@ -13,7 +14,7 @@ class PizzaApp : Application() {
         lateinit var instance: PizzaApp
             private set
 
-        lateinit var database: PizzaDatabase   // ✅ use unified DB class
+        lateinit var database: PizzaDatabase
             private set
     }
 
@@ -21,6 +22,10 @@ class PizzaApp : Application() {
         super.onCreate()
         instance = this
 
+        // ✅ Initialize Firebase
+        FirebaseApp.initializeApp(this)
+
+        // ✅ Initialize Room database
         database = Room.databaseBuilder(
             applicationContext,
             PizzaDatabase::class.java,

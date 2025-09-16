@@ -11,8 +11,8 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.pizzamania.R
-import com.pizzamania.ui.admin.AdminDashboardActivity
+import com.example.pizzamaniaapp.R
+import com.example.pizzamaniaapp.ui.admin.AdminDashboardActivity
 import com.example.pizzamaniaapp.app.ui.home.HomeActivity
 import com.example.pizzamaniaapp.app.ui.auth.RegisterActivity
 import com.example.pizzamaniaapp.ui.admin.AdminRegisterActivity

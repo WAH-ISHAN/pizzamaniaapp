@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.pizzamania.R
+import com.example.pizzamaniaapp.R
 import com.pizzamania.data.model.Order
 import com.pizzamania.data.repo.AuthRepo
 import kotlinx.coroutines.launch

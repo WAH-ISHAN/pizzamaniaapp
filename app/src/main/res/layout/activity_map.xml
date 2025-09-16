@@ -4,17 +4,10 @@
     android:layout_height="match_parent"
     android:background="@drawable/pizza_new">
 
-    <!-- Google Map Fragment -->
+    <!-- Google Map Fragment (full screen) -->
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="165dp" />
-
-    <!-- Optional MapView if needed -->
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -23,11 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="101dp"
         android:layout_gravity="top"
-        android:background="@android:color/transparent"
+        android:background="@drawable/pizza_bg"
         android:paddingStart="16dp"
         android:paddingEnd="16dp">
 
-        <!-- Back Arrow -->
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="40dp"
@@ -39,14 +31,13 @@
             android:scaleType="centerInside"
             android:src="@drawable/arrowback" />
 
-        <!-- Title -->
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:fontFamily="serif-monospace"
             android:gravity="center"
-          android:fontFamily="serif-monospace"
             android:text="Pizza Mania"
             android:textColor="@color/black"
             android:textSize="25sp"

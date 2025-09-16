@@ -9,13 +9,13 @@ plugins {
 }
 
 android {
-    namespace = "com.pizzamania"
-    compileSdk = 35   // ✅ Updated
+    namespace = "com.example.pizzamaniaapp"   // ✅ matches your Kotlin packages
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.pizzamania"
+        applicationId = "com.example.pizzamaniaapp"   // ✅ same ID for Firebase/APK
         minSdk = 24
-        targetSdk = 35   // ✅ updated to match compileSdk
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
     }
@@ -70,7 +70,6 @@ dependencies {
     // Room
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
-    implementation(libs.activity)
     kapt("androidx.room:room-compiler:2.6.1")
 
     // Glide
@@ -81,6 +80,9 @@ dependencies {
     implementation("androidx.camera:camera-camera2:1.3.4")
     implementation("androidx.camera:camera-lifecycle:1.3.4")
     implementation("androidx.camera:camera-view:1.3.4")
+    //google map
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
 
     // Tests
     testImplementation("junit:junit:4.13.2")
