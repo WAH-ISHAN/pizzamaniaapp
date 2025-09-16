@@ -1,40 +1,47 @@
 package com.pizzamania.data.local
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * DAO for caching menu items locally for offline use.
+ */
 @Dao
 interface MenuCacheDao {
 
-    /** 🔹 Insert or update single menu item (used by MenuRepo) */
+    // 🔹 Insert or update a single menu cache entry
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrUpdate(item: MenuCacheEntity)
 
-    /** 🔹 Insert or update a list of menu items */
+    // 🔹 Insert or update a list of menu cache entries
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertAll(items: List<MenuCacheEntity>)
 
-    /** 🔹 Get all menus for a given branch */
+    // 🔹 Get all cached items for a given branch
     @Query("SELECT * FROM menu_cache WHERE branchId = :branchId")
     suspend fun byBranch(branchId: String): List<MenuCacheEntity>
 
-    /** 🔹 Clear cache for a given branch */
+    // 🔹 Clear cache by branch
     @Query("DELETE FROM menu_cache WHERE branchId = :branchId")
     suspend fun clearBranch(branchId: String)
 
-    /** 🔹 Insert single item (alias for insertOrUpdate) */
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(menu: MenuCacheEntity)
-
-    /** 🔹 Find a single item by id */
-    @Query("SELECT * FROM menu_cache WHERE id = :id")
+    // 🔹 Get by Firestore document id
+    @Query("SELECT * FROM menu_cache WHERE id = :id LIMIT 1")
     suspend fun getById(id: String): MenuCacheEntity?
 
-    /** 🔹 Get all menus (stream with Flow for observation) */
+    // 🔹 Reactive stream of all cached menus (for Live UI updates)
     @Query("SELECT * FROM menu_cache")
     fun getAll(): Flow<List<MenuCacheEntity>>
 
-    /** 🔹 Delete a specific item */
+    // 🔹 Delete a single entity
     @Delete
-    suspend fun delete(menu: MenuCacheEntity)
+    suspend fun delete(item: MenuCacheEntity)
+
+    // 🔹 Delete by id
+    @Query("DELETE FROM menu_cache WHERE id = :id")
+    suspend fun deleteById(id: String)
 }

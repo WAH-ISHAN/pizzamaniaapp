@@ -2,6 +2,7 @@ package com.pizzamania.data.repo
 
 import android.net.Uri
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.pizzamania.data.local.MenuCacheDao
 import com.pizzamania.data.local.MenuCacheEntity
@@ -14,6 +15,7 @@ class MenuRepo(
     private val cache: MenuCacheDao
 ) {
 
+    /** 🔹 Add or Update menu item */
     suspend fun addOrUpdateMenu(
         branchId: String,
         itemId: String?,
@@ -21,21 +23,72 @@ class MenuRepo(
         desc: String,
         price: Double,
         stock: Long,
-        imageUri: Uri?
+        imageUri: Uri?,
+        toppings: List<String>
     ) = runCatching {
-        // 🔹TODO: Handle upload image and save/update Firestore Document
-        // Example (sketched, you should implement):
-        // 1. Upload image -> storage.reference.child("menus/$branchId/$generatedId.jpg").putFile(imageUri).await()
-        // 2. Save Firestore document with new data
+        val docRef = if (itemId != null) {
+            db.collection("branches").document(branchId)
+                .collection("menus").document(itemId)
+        } else {
+            db.collection("branches").document(branchId)
+                .collection("menus").document()
+        }
+
+        var imageUrl: String? = null
+        if (imageUri != null) {
+            val storageRef = storage.reference
+                .child("menus/$branchId/${docRef.id}.jpg")
+            storageRef.putFile(imageUri).await()
+            imageUrl = storageRef.downloadUrl.await().toString()
+        }
+
+        // Firestore document data
+        val data = hashMapOf<String, Any?>(
+            "name" to name,
+            "description" to desc,
+            "price" to price,
+            "stock" to stock,
+            "updatedAt" to System.currentTimeMillis(),
+            "toppings" to toppings
+        )
+        if (imageUrl != null || itemId == null) {
+            data["imageUrl"] = imageUrl
+        }
+
+        // Save to Firestore
+        docRef.set(data, SetOptions.merge()).await()
+
+        // Save to local Room cache
+        cache.insertOrUpdate(
+            MenuCacheEntity(
+                id = docRef.id,
+                branchId = branchId,
+                name = name,
+                description = desc,
+                price = price,
+                imageUrl = imageUrl,
+                stock = stock,
+                toppings = toppings
+            )
+        )
     }
 
+    /** 🔹 Delete menu item */
     suspend fun deleteMenu(branchId: String, itemId: String) = runCatching {
-        // 🔹TODO: Delete from Firestore and Cache as needed
+        // Delete from Firestore
+        db.collection("branches").document(branchId)
+            .collection("menus").document(itemId)
+            .delete().await()
+
+        // Delete associated image
+        val imageRef = storage.reference.child("menus/$branchId/$itemId.jpg")
+        try { imageRef.delete().await() } catch (_: Exception) {}
+
+        // Delete local Room cache entry
+        cache.deleteById(itemId)
     }
 
-    /**
-     * 🔹 Fetch Menus from Firestore
-     */
+    /** 🔹 Sync all menus for a branch (from Firestore → update cache) */
     suspend fun syncMenus(branchId: String): List<MenuItem> {
         return try {
             val snapshot = db.collection("branches")
@@ -44,7 +97,6 @@ class MenuRepo(
                 .get()
                 .await()
 
-            // Map Firestore docs -> MenuItem
             val items = snapshot.documents.mapNotNull { doc ->
                 try {
                     MenuItem(
@@ -54,37 +106,33 @@ class MenuRepo(
                         description = doc.getString("description") ?: "",
                         price = doc.getDouble("price") ?: 0.0,
                         imageUrl = doc.getString("imageUrl"),
-                        stock = doc.getLong("stock") ?: 0L
+                        stock = doc.getLong("stock") ?: 0L,
+                        toppings = doc.get("toppings") as? List<String> ?: emptyList()
                     )
-                } catch (e: Exception) {
-                    e.printStackTrace()
+                } catch (_: Exception) {
                     null
                 }
             }
 
-            // Update cache (cannot do inside mapNotNull, so we loop after)
+            // Update local cache
             items.forEach { item ->
-                try {
-                    cache.insertOrUpdate(
-                        MenuCacheEntity(
-                            id = item.id,
-                            branchId = item.branchId,
-                            name = item.name,
-                            description = item.description,
-                            price = item.price,
-                            imageUrl = item.imageUrl,
-                            stock = item.stock
-                        )
+                cache.insertOrUpdate(
+                    MenuCacheEntity(
+                        id = item.id,
+                        branchId = item.branchId,
+                        name = item.name,
+                        description = item.description,
+                        price = item.price,
+                        imageUrl = item.imageUrl,
+                        stock = item.stock,
+                        toppings = item.toppings   // ✅ FIXED
                     )
-                } catch (_: Exception) {
-                    // ignore single insert failures
-                }
+                )
             }
 
             items
         } catch (e: Exception) {
-            e.printStackTrace()
-            // fallback → local cache
+            // If Firestore fails → load from cache
             cache.byBranch(branchId).map {
                 MenuItem(
                     id = it.id,
@@ -93,15 +141,14 @@ class MenuRepo(
                     description = it.description,
                     price = it.price,
                     imageUrl = it.imageUrl,
-                    stock = it.stock
+                    stock = it.stock,
+                    toppings = it.toppings
                 )
             }
         }
     }
 
-    /**
-     * 🔹 Fetch cached menus (offline support)
-     */
+    /** 🔹 Load menus offline (only from cache) */
     suspend fun cachedMenus(branchId: String): List<MenuItem> =
         cache.byBranch(branchId).map {
             MenuItem(
@@ -111,7 +158,8 @@ class MenuRepo(
                 description = it.description,
                 price = it.price,
                 imageUrl = it.imageUrl,
-                stock = it.stock
+                stock = it.stock,
+                toppings = it.toppings
             )
         }
 }

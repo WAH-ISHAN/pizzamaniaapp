@@ -12,6 +12,14 @@
             <item>Galle</item>
         </string-array>
 
+    <string-array name="toppings_array">
+        <item>Cheese</item>
+        <item>Mushroom</item>
+        <item>Olives</item>
+        <item>Chicken</item>
+        <item>Chilli</item>
+    </string-array>
+
 </resources>
 
 <!-- other strings -->

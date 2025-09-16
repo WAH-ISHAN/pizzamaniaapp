@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pizzamania">
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -7,6 +8,15 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <!-- Storage permissions -->
+    <!-- Required for Android 13+ -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <!-- Backward compatibility for Android 12 and below -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <!-- Camera is optional -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -20,7 +30,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PizzaMania">
 
-        <!-- 🔹 MainActivity = Launcher -->
+        <!-- Launcher -->
         <activity
             android:name="com.example.pizzamaniaapp.app.ui.auth.MainActivity"
             android:exported="true">
@@ -29,44 +39,56 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Menu Details -->
         <activity
-            android:name="com.example.pizzamaniaapp.app.ui.menu.MenuDetailActivity"
+            android:name="com.example.pizzamaniaapp.app.ui.menu.ItemDetailActivity"
             android:exported="false" />
 
-        <!-- 🔹 Login -->
+        <!-- Login -->
         <activity
             android:name="com.example.pizzamaniaapp.ui.LoginActivity"
             android:exported="false" />
 
-        <!-- 🔹 Register -->
+        <!-- Register -->
         <activity
             android:name="com.example.pizzamaniaapp.app.ui.auth.RegisterActivity"
             android:exported="false" />
 
-        <!-- 🔹 Admin Dashboard -->
+        <!-- Admin Dashboard -->
         <activity
             android:name="com.pizzamania.ui.admin.AdminDashboardActivity"
             android:exported="true" />
 
-        <!-- 🔹 Admin Add Menu -->
+        <!-- Admin Add Menu -->
         <activity
-            android:name="com.pizzamania.ui.admin.AddMenuActivity"
+            android:name="com.pizzamania.ui.admin.AdminAddMenuActivity"
             android:exported="false" />
 
-        <!-- 🔹 Admin Register -->
+        <!-- Admin Register -->
         <activity
             android:name="com.example.pizzamaniaapp.ui.admin.AdminRegisterActivity"
             android:exported="false" />
 
-        <!-- 🔹 Home Activity -->
+        <!-- Home Activity -->
         <activity
             android:name="com.example.pizzamaniaapp.app.ui.home.HomeActivity"
             android:exported="true" />
 
-        <!-- 🔹 Menu List -->
+        <!-- Menu List -->
         <activity
             android:name="com.example.pizzamaniaapp.app.ui.menu.MenuListActivity"
             android:exported="true" />
 
+        <!-- FileProvider -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 </manifest>

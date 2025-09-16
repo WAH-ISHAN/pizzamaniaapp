@@ -44,11 +44,11 @@
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="76dp"
             android:layout_marginTop="6dp"
             android:text="Description..."
-            android:textSize="14sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <!-- Quantity Selector -->
         <LinearLayout
@@ -105,7 +105,7 @@
             android:textColor="@color/black"
             android:layout_marginTop="16dp" />
 
-        <!-- Toppings -->
+        <!-- Toppings Section -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,6 +113,16 @@
             android:text="Toppings"
             android:textStyle="bold"
             android:textSize="16sp"
+            android:textColor="@color/black" />
+
+        <!-- ✅ This is the new TextView that will show toppings list -->
+        <TextView
+            android:id="@+id/tvToppings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="No toppings"
+            android:textSize="14sp"
             android:textColor="@color/black" />
 
         <HorizontalScrollView

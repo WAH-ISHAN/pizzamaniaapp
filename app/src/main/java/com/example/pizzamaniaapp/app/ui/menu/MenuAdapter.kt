@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pizzamania.R
-import com.pizzamania.data.model.MenuItem // ✅ assume your data model has (id, name, desc, price, imageUrl)
+import com.pizzamania.data.model.MenuItem
 
 class MenuAdapter(
     private val onClick: (MenuItem) -> Unit
@@ -23,7 +23,8 @@ class MenuAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuVH {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.activity_menu_list, parent, false)
+        val v = LayoutInflater.from(parent.context)
+            .inflate(R.layout.row_menu_item, parent, false)
         return MenuVH(v)
     }
 
@@ -35,15 +36,20 @@ class MenuAdapter(
     }
 
     class MenuVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val ivThumb = itemView.findViewById<ImageView>(R.id.ivThumb)
-        private val tvName = itemView.findViewById<TextView>(R.id.tvName)
-        private val tvDesc = itemView.findViewById<TextView>(R.id.tvDesc)
-        private val tvPrice = itemView.findViewById<TextView>(R.id.tvPrice)
+        private val ivThumb: ImageView = itemView.findViewById(R.id.ivThumb)
+        private val tvName: TextView = itemView.findViewById(R.id.tvName)
+        private val tvDesc: TextView = itemView.findViewById(R.id.tvDesc)
+        private val tvPrice: TextView = itemView.findViewById(R.id.tvPrice)
+        private val tvToppings: TextView = itemView.findViewById(R.id.tvToppings)
 
         fun bind(menu: MenuItem, onClick: (MenuItem) -> Unit) {
             tvName.text = menu.name
             tvDesc.text = menu.description
-            tvPrice.text = "Rs. ${menu.price}"
+            tvPrice.text = "Rs. %.2f".format(menu.price)
+            tvToppings.text =
+                if (menu.toppings.isNotEmpty()) "Toppings: ${menu.toppings.joinToString(", ")}"
+                else "No toppings"
+
             Glide.with(itemView.context)
                 .load(menu.imageUrl)
                 .placeholder(R.drawable.placeholder)
