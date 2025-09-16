@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
-    <cache-path name="images" path="images/" />
-    <external-cache-path name="ext_images" path="images/" />
+
+    <!-- Internal app cache ( /data/data/<pkg>/cache/images/ ) -->
+    <cache-path
+        name="images"
+        path="images/" />
+
+    <!-- External app cache ( /storage/emulated/0/Android/data/<pkg>/cache/images/ ) -->
+    <external-cache-path
+        name="ext_images"
+        path="images/" />
+
+    <!-- External app files (persistent, e.g. for Camera)
+         /storage/emulated/0/Android/data/<pkg>/files/Pictures/  -->
+
+
+        <!-- For camera photo capture -->
+        <external-files-path
+            name="camera_images"
+            path="Pictures/" />
+
 </paths>

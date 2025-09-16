@@ -10,6 +10,10 @@ data class Branch(
     val address: String
 )
 
+// File: com/pizzamania/data/model/MenuItem.kt
+
+
+
 data class MenuItem(
     val id: String,
     val branchId: String,
@@ -17,9 +21,9 @@ data class MenuItem(
     val description: String,
     val price: Double,
     val imageUrl: String?,
-    val stock: Long
+    val stock: Long,
+    val toppings: List<String> = emptyList()   // ✅ FIXED field added
 )
-
 data class OrderItem(val menuId: String, val name: String, val price: Double, val qty: Int)
 
 data class Order(

@@ -2,17 +2,18 @@ package com.pizzamania.app
 
 import android.app.Application
 import androidx.room.Room
-import com.pizzamania.data.local.AppDb
+import com.pizzamania.data.local.PizzaDatabase
 
+/**
+ * Global Application class - initializes Room DB once.
+ */
 class PizzaApp : Application() {
 
     companion object {
-        // Application instance if needed elsewhere
         lateinit var instance: PizzaApp
             private set
 
-        // Room database reference
-        lateinit var database: AppDb
+        lateinit var database: PizzaDatabase   // ✅ use unified DB class
             private set
     }
 
@@ -20,13 +21,12 @@ class PizzaApp : Application() {
         super.onCreate()
         instance = this
 
-        // Initialize Room database once when app starts
         database = Room.databaseBuilder(
             applicationContext,
-            AppDb::class.java,
+            PizzaDatabase::class.java,
             "pizza-db"
         )
-            .fallbackToDestructiveMigration() // for dev/testing; removes db if schema mismatch
+            .fallbackToDestructiveMigration() // Dev-only (drops DB on schema change)
             .build()
     }
 }

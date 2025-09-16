@@ -22,7 +22,7 @@ class AdminDashboardActivity : AppCompatActivity() {
             startActivity(Intent(this@AdminDashboardActivity, MenuListActivity::class.java))
         }
         findViewById<Button>(R.id.btnSeed).setOnClickListener {
-            startActivity(Intent(this@AdminDashboardActivity, AddMenuActivity::class.java))
+            startActivity(Intent(this@AdminDashboardActivity, AdminAddMenuActivity::class.java))
         }
         findViewById<Button>(R.id.btnLogout).setOnClickListener {
             Firebase.auth.signOut()
